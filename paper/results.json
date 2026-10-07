@@ -1,0 +1,1135 @@
+{
+ "_doc": "Curated numbers for the paper tables. status: done | queued(<job ids>) | planned. null = not yet available. Metrics: heldout_ce (192 held-out SFT pairs, response tokens), math500 (strict last-boxed, greedy, 16K), aime24/aime25 = [pass@8, avg@8, pass@1] (strict, T=0.6, 16K), hmmt25 / hmmt24 = [pass@8, avg@8, pass@1] (HMMT February 2025 / 2024, 30 problems each). kv_per_block = persistent KV rows kept per 512 generated tokens (per KV head, averaged).",
+ "common": {
+  "model": "Qwen3-4B-Base",
+  "data": "OpenMathReasoning-derived math SFT, 400K prompt/response pairs, canonical 8x1x32 order",
+  "response_tokens": "2B",
+  "C": 512,
+  "eff_batch": 256,
+  "lr": "1e-4 WSD",
+  "eval_cap": 32768
+ },
+ "arms": [
+  {
+   "key": "base",
+   "label": "Qwen3-4B-Base (no SFT)",
+   "group": "reference",
+   "kv_per_block": 512,
+   "status": "done",
+   "heldout_ce": null,
+   "math500": 71.0,
+   "aime24": [
+    26.7,
+    10.0,
+    10.0
+   ],
+   "aime25": [
+    26.7,
+    7.5,
+    6.7
+   ],
+   "hmmt25": [
+    13.3,
+    2.1,
+    3.3
+   ],
+   "hmmt24": [
+    6.7,
+    3.3,
+    3.3
+   ]
+  },
+  {
+   "key": "vanilla",
+   "label": "Vanilla SFT (full KV)",
+   "group": "reference",
+   "kv_per_block": 512,
+   "status": "done",
+   "heldout_ce": 0.4162,
+   "math500": 87.4,
+   "aime24": [
+    76.7,
+    44.2,
+    50.0
+   ],
+   "aime25": [
+    53.3,
+    32.9,
+    30.0
+   ],
+   "hmmt25": [
+    43.3,
+    22.1,
+    20.0
+   ],
+   "hmmt24": [
+    43.3,
+    24.6,
+    23.3
+   ]
+  },
+  {
+   "key": "vanilla_seed1",
+   "label": "Vanilla SFT, replicate (data seed 1)",
+   "group": "reference",
+   "kv_per_block": 512,
+   "status": "queued(2128,2129,2130)",
+   "heldout_ce": null,
+   "math500": null,
+   "aime24": null,
+   "aime25": null,
+   "hmmt25": null,
+   "hmmt24": null,
+   "hmmt25_status": "queued(2131)",
+   "hmmt24_status": "queued(2131)",
+   "note": "training-variance estimate for the teacher/reference; same pool, LR, budget; canonical stream seeded with SEED=1"
+  },
+  {
+   "key": "uniform128",
+   "label": "uniform $K{=}128$",
+   "group": "ours",
+   "kv_per_block": 128,
+   "status": "done",
+   "heldout_ce": 0.4227,
+   "math500": 85.8,
+   "aime24": [
+    66.7,
+    40.8,
+    36.7
+   ],
+   "aime25": [
+    53.3,
+    27.1,
+    20.0
+   ],
+   "schedule": "uniform",
+   "hmmt25": [
+    33.3,
+    22.9,
+    26.7
+   ],
+   "hmmt24": [
+    43.3,
+    19.6,
+    16.7
+   ]
+  },
+  {
+   "key": "uniform128_reeval",
+   "label": "uniform $K{=}128$, re-sampled (seed 4321)",
+   "group": "appendix",
+   "kv_per_block": 128,
+   "status": "done",
+   "heldout_ce": 0.4227,
+   "math500": 85.8,
+   "aime24": [
+    56.7,
+    36.2,
+    46.7
+   ],
+   "aime25": [
+    50.0,
+    27.1,
+    26.7
+   ],
+   "schedule": "uniform",
+   "hmmt25": null,
+   "hmmt24": null,
+   "note": "same checkpoint, second sampling seed on AIME only (job 2181): eval-to-eval sampling variance of avg@8 is about 2 points pooled over 60 problems (34.0 -> 31.7); MATH-500 is greedy and unchanged"
+  },
+  {
+   "key": "hetero_proxy",
+   "label": "per-head quotas (earlier schedule)",
+   "group": "appendix",
+   "kv_per_block": 128,
+   "status": "done",
+   "heldout_ce": 0.4225,
+   "math500": 85.6,
+   "aime24": [
+    66.7,
+    34.2,
+    33.3
+   ],
+   "aime25": [
+    46.7,
+    27.9,
+    26.7
+   ],
+   "schedule": "proxy (superseded)",
+   "hmmt25": null,
+   "hmmt24": null
+  },
+  {
+   "key": "vph",
+   "label": "per-head quotas (optimized)",
+   "group": "ours-variant",
+   "kv_per_block": 128,
+   "status": "done",
+   "heldout_ce": 0.4231,
+   "math500": 84.2,
+   "aime24": [
+    70.0,
+    37.1,
+    33.3
+   ],
+   "aime25": [
+    40.0,
+    26.3,
+    26.7
+   ],
+   "schedule": "vanilla analysis, per head",
+   "hmmt25": null,
+   "hmmt24": null
+  },
+  {
+   "key": "vpl",
+   "label": "per-layer quotas (S-PL-trunc)",
+   "group": "ours-variant",
+   "kv_per_block": 128,
+   "status": "done",
+   "heldout_ce": 0.4215,
+   "math500": 84.8,
+   "aime24": [
+    76.7,
+    41.2,
+    46.7
+   ],
+   "aime25": [
+    60.0,
+    31.2,
+    30.0
+   ],
+   "schedule": "trained-model truncation costs, per layer (S-PL-trunc)",
+   "hmmt25": [
+    46.7,
+    24.6,
+    23.3
+   ],
+   "hmmt24": [
+    40.0,
+    21.7,
+    26.7
+   ],
+   "note": "served on the layered path (per-layer FlashInfer masks over the stock cache, piecewise CUDA graphs); train 2105/2106, evals 2149/2150/2154, suite 2151"
+  },
+  {
+   "key": "kd1",
+   "label": "uniform + KD ($\\lambda{=}1$, $T{=}1$)",
+   "group": "ours-variant",
+   "kv_per_block": 128,
+   "status": "queued(2066,2067,2068)",
+   "heldout_ce": null,
+   "math500": null,
+   "aime24": null,
+   "aime25": null,
+   "hmmt25": null,
+   "hmmt24": null
+  },
+  {
+   "key": "tail16",
+   "label": "uniform + static raw tail 16",
+   "group": "ours-variant",
+   "kv_per_block": 144,
+   "status": "queued(2134,2135,2136)",
+   "heldout_ce": null,
+   "math500": null,
+   "aime24": null,
+   "aime25": null,
+   "hmmt25": null,
+   "hmmt24": null,
+   "hmmt25_status": "queued(2137)",
+   "hmmt24_status": "queued(2137)",
+   "note": "128 codes on a bitrev grid over offsets [0,496) + the last 16 raw KVs of every block (144 rows, 3.6:1); smoke 2132, HF-vs-vLLM parity 2133"
+  },
+  {
+   "key": "evict_recency",
+   "label": "sink + recency (vanilla weights)",
+   "group": "baseline",
+   "kv_per_block": 128,
+   "status": "queued(2069)",
+   "heldout_ce": null,
+   "math500": null,
+   "aime24": null,
+   "aime25": null,
+   "hmmt25": null,
+   "hmmt24": null
+  },
+  {
+   "key": "evict_random",
+   "label": "random eviction (vanilla weights)",
+   "group": "baseline",
+   "kv_per_block": 128,
+   "status": "queued(2070)",
+   "heldout_ce": null,
+   "math500": null,
+   "aime24": null,
+   "aime25": null,
+   "hmmt25": null,
+   "hmmt24": null
+  },
+  {
+   "key": "evict_score",
+   "label": "score eviction, H2O-style (vanilla weights)",
+   "group": "baseline",
+   "kv_per_block": 128,
+   "status": "queued(2071)",
+   "heldout_ce": null,
+   "math500": null,
+   "aime24": null,
+   "aime25": null,
+   "hmmt25": null,
+   "hmmt24": null
+  },
+  {
+   "key": "gist",
+   "label": "learned gists at boundaries (LightThinker-style)",
+   "group": "baseline",
+   "kv_per_block": 128,
+   "status": "planned",
+   "heldout_ce": null,
+   "math500": null,
+   "aime24": null,
+   "aime25": null,
+   "hmmt25": null,
+   "hmmt24": null
+  }
+ ],
+ "scaling": {
+  "_doc": "C/K sweep, uniform quotas, bitrev, canonical order. heldout_ce comparable only within the same C.",
+  "points": [
+   {
+    "C": 512,
+    "K": 128,
+    "ratio": 4,
+    "status": "done",
+    "heldout_ce": 0.4227,
+    "math500": 85.8,
+    "aime_avg8": 34.0
+   },
+   {
+    "C": 512,
+    "K": 64,
+    "ratio": 8,
+    "status": "queued(2081,2083)",
+    "heldout_ce": null,
+    "math500": null,
+    "aime_avg8": null
+   },
+   {
+    "C": 512,
+    "K": 256,
+    "ratio": 2,
+    "status": "queued(2085,2087)",
+    "heldout_ce": null,
+    "math500": null,
+    "aime_avg8": null
+   },
+   {
+    "C": 256,
+    "K": 64,
+    "ratio": 4,
+    "status": "queued(2089,2091)",
+    "heldout_ce": null,
+    "math500": null,
+    "aime_avg8": null
+   },
+   {
+    "C": 1024,
+    "K": 256,
+    "ratio": 4,
+    "status": "queued(2093,2095)",
+    "heldout_ce": null,
+    "math500": null,
+    "aime_avg8": null
+   }
+  ]
+ },
+ "parity": {
+  "train_vs_gen": {
+   "arm": "vph",
+   "seqs": 3,
+   "mean_abs_dce": "3.5e-4 to 4.5e-4",
+   "max_abs_dce": "1.3e-2 to 2.3e-2",
+   "wrong_schedule_mean_abs_dce": "1.6e-2 to 2.2e-2",
+   "wrong_schedule_max": 4.0
+  },
+  "hf_vs_vllm": {
+   "arms": [
+    "uniform128",
+    "hetero_proxy",
+    "vph"
+   ],
+   "tokens": "510 prompt + 16 generated (one block boundary)",
+   "result": "identical greedy tokens"
+  },
+  "multi_boundary": {
+   "setting": "per-layer headline, physical cache groups; 510-token prompt, 1,200 teacher-forced tokens (two block boundaries)",
+   "result": "top-1 agreement 0.995, mean $|\\Delta\\log p|$ 0.006",
+   "src": "serve_plain_check 14247186 (2026-09-21)"
+  }
+ },
+ "old_layout_reference": {
+  "_doc": "Appended code positions (pre-bitrev), K=128, old cluster; used only in the appendix history table.",
+  "no_tail": {
+   "math500": 82.6,
+   "aime_pass8": 48.3,
+   "aime_avg8": 24.6,
+   "aime_pass1": 21.7
+  },
+  "replay128": {
+   "math500": 85.4,
+   "aime_pass8": 50.0,
+   "aime_avg8": 28.3,
+   "aime_pass1": 28.3
+  },
+  "retain128": {
+   "math500": 83.0,
+   "aime_pass8": 53.3,
+   "aime_avg8": 29.2,
+   "aime_pass1": 23.3
+  },
+  "vanilla_old": {
+   "math500": 86.0,
+   "aime_pass8": 63.3,
+   "aime_avg8": 35.8,
+   "aime_pass1": 35.0,
+   "heldout_ce": 0.4157
+  }
+ },
+ "suite": {
+  "_doc": "Extended competition suite (paper/data/suite_summary.json, scripts/summarize_suite.py): 12 sets, 446 problems, 8 samples, avg@8; paired per-problem bootstrap CIs. Jobs 2151 (S-PL-trunc), 2152+2155+2156 (uniform), 2153 (vanilla).",
+  "pools": {
+   "competition": 446,
+   "post_cutoff": 213,
+   "pre_2025": 233
+  },
+  "per_layer_minus_uniform": {
+   "competition": [
+    2.1,
+    0.8,
+    3.5
+   ],
+   "post_cutoff": [
+    2.0,
+    0.2,
+    3.8
+   ],
+   "pre_2025": [
+    2.3,
+    0.4,
+    4.2
+   ]
+  },
+  "per_layer_minus_vanilla": {
+   "competition": [
+    -1.8,
+    -3.4,
+    -0.3
+   ],
+   "post_cutoff": [
+    -1.5,
+    -3.8,
+    0.9
+   ],
+   "pre_2025": [
+    -2.1,
+    -4.1,
+    -0.1
+   ]
+  },
+  "uniform_minus_vanilla": {
+   "competition": [
+    -4.0,
+    -5.5,
+    -2.5
+   ],
+   "post_cutoff": [
+    -3.5,
+    -5.8,
+    -1.3
+   ],
+   "pre_2025": [
+    -4.4,
+    -6.3,
+    -2.4
+   ]
+  }
+ },
+ "_doc_32k": "arms32k: same-set protocol on H100, 32K cap (MAX_NEW_TOKENS=31744), seed 1234, 8 samples, T=0.6, semantic grader (strict last-boxed OR math-verify on the full text; eviction rows: math-verify, 8 single-sample seeds 1234-1241). aime25/hmmt25 = [pass@8, avg@8, pass@1(first)], trunc = % samples at the cap [aime25, hmmt25], gen = mean generated tokens [aime25, hmmt25]. Records: outputs/eval/<set>_qwen3_4b_vllm_<tag>_merged, hf_evict_<policy>_k128_32k. | 2026-09-21 (user): headline = per-layer dynamic allocation; message = uniform -> dynamic; tail16, KD, the three-way combination and the vanilla replicate are archived (Appendix).",
+ "arms32k": [
+  {
+   "key": "base",
+   "group": "reference",
+   "label": "Qwen3-4B-Base (no SFT)",
+   "short": "base",
+   "kv_per_block": 512,
+   "heldout_ce": null,
+   "status": "done",
+   "tag": "base_sameset32k",
+   "math500": 69.6,
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (della gputest 14261380)",
+   "math500_greedy_prev": 71.0
+  },
+  {
+   "key": "vanilla",
+   "group": "reference",
+   "label": "Vanilla SFT (full KV)",
+   "kv_per_block": 512,
+   "heldout_ce": 0.4162,
+   "status": "done",
+   "aime25": [
+    60.0,
+    37.1,
+    33.3
+   ],
+   "hmmt25": [
+    36.7,
+    22.5,
+    26.7
+   ],
+   "trunc": [
+    3.3,
+    3.8
+   ],
+   "gen": [
+    14695,
+    15437
+   ],
+   "src": "vanilla_sameset32k (14200869_0 + 14214351)",
+   "tag": "vanilla_sameset32k",
+   "short": "vanilla",
+   "math500": 88.1,
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (della gputest 14268570)",
+   "math500_greedy_prev": 87.4
+  },
+  {
+   "key": "vanilla_seed1",
+   "group": "archived",
+   "label": "Vanilla SFT replicate (data seed 1)",
+   "kv_per_block": 512,
+   "heldout_ce": null,
+   "status": "done",
+   "aime25": null,
+   "hmmt25": null,
+   "trunc": null,
+   "gen": null,
+   "tag": "vanilla_seed1_sameset32k",
+   "short": "vanilla (seed 1)",
+   "math500": null
+  },
+  {
+   "key": "combined",
+   "group": "archived",
+   "label": "per-layer + raw tail 16 + KD (three-way combination)",
+   "kv_per_block": 144,
+   "heldout_ce": 0.4196,
+   "status": "done",
+   "aime25": null,
+   "hmmt25": null,
+   "trunc": null,
+   "gen": null,
+   "tag": "c256tpl_tail16_kd_sameset32k",
+   "short": "per-layer+tail+KD",
+   "math500": 87.8,
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (della gputest 14268437)",
+   "math500_greedy_prev": 83.0
+  },
+  {
+   "key": "uniform128",
+   "group": "ablation",
+   "label": "uniform allocation (every layer 128)",
+   "kv_per_block": 128,
+   "heldout_ce": 0.4227,
+   "status": "done",
+   "aime25": [
+    63.3,
+    34.2,
+    33.3
+   ],
+   "hmmt25": [
+    46.7,
+    24.6,
+    23.3
+   ],
+   "trunc": [
+    3.8,
+    5.4
+   ],
+   "gen": [
+    15213,
+    15652
+   ],
+   "src": "c256uni_u128_sameset32k",
+   "tag": "c256uni_u128_sameset32k",
+   "short": "uniform 128",
+   "math500": 88.3,
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (della gputest 14260489)",
+   "math500_greedy_prev": 85.8
+  },
+  {
+   "key": "vpl",
+   "group": "ours",
+   "label": "\\method{}: dynamic per-layer allocation (mean 128)",
+   "kv_per_block": 128,
+   "heldout_ce": 0.4215,
+   "status": "done",
+   "aime25": [
+    60.0,
+    33.8,
+    36.7
+   ],
+   "hmmt25": [
+    50.0,
+    22.9,
+    20.0
+   ],
+   "trunc": [
+    2.9,
+    4.6
+   ],
+   "gen": [
+    14776,
+    15479
+   ],
+   "src": "c256tpl_sameset32k (14195185_0 + 14214349)",
+   "tag": "c256tpl_sameset32k",
+   "short": "\\method{} (per-layer)",
+   "math500": 87.5,
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (della gputest 14262716)",
+   "math500_greedy_prev": 84.8
+  },
+  {
+   "key": "tail16",
+   "group": "archived",
+   "label": "uniform 128 + raw tail 16",
+   "kv_per_block": 144,
+   "heldout_ce": 0.4213,
+   "status": "done",
+   "aime25": [
+    63.3,
+    32.5,
+    36.7
+   ],
+   "hmmt25": [
+    43.3,
+    21.2,
+    20.0
+   ],
+   "trunc": [
+    4.6,
+    4.2
+   ],
+   "gen": [
+    15103,
+    15814
+   ],
+   "src": "c256uni_tail16_sameset32k (14195191_0 + 14214355)",
+   "ce_src": "docs/HANDOVER_tail16_2026-09-19.md (collaborator run, step 936, 1,285,970 held-out tokens)",
+   "tag": "c256uni_tail16_sameset32k",
+   "short": "tail 16",
+   "math500": 87.3,
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (della gputest 14266167)",
+   "math500_greedy_prev": 86.2
+  },
+  {
+   "key": "kd1",
+   "group": "archived",
+   "label": "uniform 128 + KD from the vanilla teacher",
+   "kv_per_block": 128,
+   "heldout_ce": 0.4211,
+   "status": "done",
+   "aime25": null,
+   "hmmt25": null,
+   "trunc": null,
+   "gen": null,
+   "tag": "c256uni_kd_sameset32k",
+   "short": "KD",
+   "math500": 86.7,
+   "run": "compressed_K256_xblk_kd1.0t1.0_qwen3_4b_quota128_c512_xblk_bitrev_kd_uniform",
+   "note": "TigerAI job 2164; checkpoint arrived on della 2026-09-21 in the _from_tigerai mirror and is symlinked into sft_ddp",
+   "heldout_ce_src": "heldout_position_ce.jsonl step 936 phase=final, 192 held-out pairs (TigerAI job 2164)",
+   "status_note": "suite complete (final merge 14268821); MATH-500 avg@4 shards 2-3 on gputest 14268822",
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (della gputest 14270339)"
+  },
+  {
+   "key": "evict_recency",
+   "group": "baseline",
+   "label": "sink + recency (vanilla weights)",
+   "kv_per_block": 128,
+   "heldout_ce": null,
+   "status": "done",
+   "aime25": [
+    53.3,
+    27.5,
+    26.7
+   ],
+   "hmmt25": [
+    33.3,
+    17.9,
+    20.0
+   ],
+   "trunc": [
+    37.9,
+    37.9
+   ],
+   "gen": [
+    22228,
+    23715
+   ],
+   "src": "hf_evict_recency_k128_32k, seeds 1234-1241",
+   "evict": "recency",
+   "short": "recency",
+   "math500": null,
+   "pool_note": "aime2025 + hmmt_feb_2025 only (60 problems), 8 single-sample seeds, HF eviction at 32K; array 14193621 complete 2026-09-22"
+  },
+  {
+   "key": "evict_random",
+   "group": "baseline",
+   "label": "random eviction (vanilla weights)",
+   "kv_per_block": 128,
+   "heldout_ce": null,
+   "status": "done",
+   "aime25": null,
+   "hmmt25": null,
+   "trunc": null,
+   "gen": null,
+   "evict": "random",
+   "short": "random",
+   "math500": null,
+   "pool_note": "aime2025 + hmmt_feb_2025 only (60 problems), 8 single-sample seeds, HF eviction at 32K; array 14193621 complete 2026-09-22"
+  },
+  {
+   "key": "evict_score",
+   "group": "baseline",
+   "label": "score eviction, H2O-style (vanilla weights)",
+   "kv_per_block": 128,
+   "heldout_ce": null,
+   "status": "done",
+   "aime25": null,
+   "hmmt25": null,
+   "trunc": null,
+   "gen": null,
+   "evict": "score",
+   "short": "score",
+   "math500": null,
+   "pool_note": "aime2025 + hmmt_feb_2025 only (60 problems), 8 single-sample seeds, HF eviction at 32K; array 14193621 complete 2026-09-22"
+  },
+  {
+   "key": "rkv_b2048",
+   "group": "baseline",
+   "label": "R-KV \\citep{cai2025rkv}, budget 2048 (vanilla weights)",
+   "kv_per_block": 74,
+   "heldout_ce": null,
+   "status": "done",
+   "tag": "rkv_b2048_sameset32k",
+   "short": "R-KV 2048",
+   "math500": 83.9,
+   "pool_note": "R-KV ported to vLLM 0.25.1; constant budget of 2048 KV rows, buffer 64, same vanilla SFT checkpoint, same 446 problems, avg@8 at 32K, same grader. Mean resident generated KV 2045 rows against 1789 for our 8:1 arm on the same generations, so this row is generous to R-KV. VALID RUN 2026-09-23: cap 1379 MiB from the 1.5x-length formula, 13/13 sets merged, ZERO RKV-SKIP lines.",
+   "heldout_ce_na": true,
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap; R-KV budget 2048 on the vanilla checkpoint, in-node on reservation 14314936, 0 RKV-SKIP lines (2026-09-25)"
+  },
+  {
+   "key": "rkv_b4096",
+   "group": "baseline",
+   "label": "R-KV \\citep{cai2025rkv}, budget 4096 (vanilla weights)",
+   "kv_per_block": 144,
+   "heldout_ce": null,
+   "status": "done",
+   "tag": "rkv_b4096_sameset32k",
+   "short": "R-KV 4096",
+   "math500": 86.5,
+   "pool_note": "R-KV ported to vLLM 0.25.1; constant budget of 4096 KV rows for the whole sequence, buffer 64, on the same vanilla SFT checkpoint, the same 446 problems, avg@8 at 32K, same grader. Mean resident generated KV 3996 rows against 3578 for our 4:1 arm on the same generations, so this row is generous to R-KV. VALID RUN 2026-09-23: cap 5348 MiB from the 1.5x-length formula, 13/13 sets merged, ZERO RKV-SKIP lines.",
+   "heldout_ce_na": true,
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap; R-KV budget 4096 on the vanilla checkpoint, in-node on reservation 14324060, 0 RKV-SKIP lines (2026-09-25)"
+  },
+  {
+   "key": "gist",
+   "group": "ablation",
+   "label": "no in-block positions: code rows appended after the block (uniform 128)",
+   "kv_per_block": 128,
+   "heldout_ce": 0.4297,
+   "status": "done",
+   "aime25": null,
+   "hmmt25": null,
+   "trunc": null,
+   "gen": null,
+   "tag": "c128uni_appended_gist_sameset32k",
+   "short": "appended positions",
+   "math500": 85.8,
+   "math500_greedy_prev": null,
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (della gputest 14263462)"
+  },
+  {
+   "key": "vph",
+   "group": "allocation",
+   "label": "per-head allocation (S-PH-vanilla)",
+   "short": "per-head",
+   "kv_per_block": 128,
+   "heldout_ce": 0.4231,
+   "status": "planned",
+   "aime25": null,
+   "hmmt25": null,
+   "trunc": null,
+   "gen": null,
+   "tag": "c256vph_sameset32k",
+   "math500": null,
+   "math500_src": null,
+   "src": "TigerAI run 2034 mirrored to della, packed serving",
+   "math500_greedy_prev": 84.2,
+   "status_note": "paused 2026-09-21 until the packed sidecar matches the other serving paths; greedy MATH-500 was 84.2 (TigerAI 2035)"
+  },
+  {
+   "key": "tph512",
+   "group": "allocation",
+   "label": "per-head quotas, $K_{\\max}{=}512$ (nested)",
+   "short": "tph512",
+   "kv_per_block": 128,
+   "heldout_ce": 0.4209,
+   "status": "done",
+   "tag": "tph512_sameset32k",
+   "math500": null,
+   "math500_src": "not run"
+  },
+  {
+   "key": "tpl512",
+   "group": "allocation",
+   "label": "per-layer quotas, $K_{\\max}{=}512$",
+   "short": "tpl512",
+   "kv_per_block": 128,
+   "heldout_ce": 0.4217,
+   "status": "done",
+   "tag": "tpl512_sameset32k",
+   "math500": 87.85,
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K (gpu-short array 14365044)"
+  },
+  {
+   "key": "lt_thought",
+   "group": "prior",
+   "label": "LightThinker (thought-level)",
+   "short": "LightThinker",
+   "kv_per_block": 97,
+   "heldout_ce": 0.4391,
+   "heldout_ce_na": false,
+   "status": "done",
+   "math500": 83.4,
+   "tag": "lt_thought",
+   "kv_note": "9 cache rows + the continue token stay per thought (10 rows); its generations end a thought every 53.0 tokens on average (completion bench cap-128 cell, 146032 compactions over 7.74M generated tokens, 0 preemptions, 2026-09-26) -> 512/53.0*10 = 97 rows per 512, 5.3:1",
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (reservation shards, 2026-09-26)",
+   "thought_tokens": 53.0,
+   "rows_per_thought": 10
+  },
+  {
+   "key": "lt64k9",
+   "group": "held",
+   "label": "LightThinker budget at a fixed cadence ($C{=}64$, $K{=}9$, appended)",
+   "short": "C=64 K=9 appended",
+   "kv_per_block": 72,
+   "heldout_ce": null,
+   "heldout_ce_na": true,
+   "status": "done",
+   "tag": "lt64k9_sameset32k",
+   "math500": 83.1,
+   "math500_src": "avg@4, T=0.6, strict, 16K (gpu-short 14365825)",
+   "held_note": "user 2026-09-25: approximation held out of the paper for now"
+  }
+ ],
+ "scaling32k": [
+  {
+   "C": 512,
+   "K": 128,
+   "ratio": "4:1",
+   "key": "uniform128",
+   "status": "done",
+   "heldout_ce": 0.4227,
+   "math500": 88.3
+  },
+  {
+   "C": 512,
+   "K": 64,
+   "ratio": "8:1",
+   "key": "ck512k64",
+   "tag": "ck512k64_sameset32k",
+   "status": "done",
+   "heldout_ce": 0.4281,
+   "math500": null,
+   "suite_src": "446-problem suite avg@8, 32K cap (della gputest 14271288/14271289/14275013)"
+  },
+  {
+   "C": 512,
+   "K": 256,
+   "ratio": "2:1",
+   "key": "ck512k256",
+   "tag": "c512k256_bitrev_sameset32k",
+   "status": "done",
+   "heldout_ce": 0.4184,
+   "math500": null,
+   "suite_src": "446-problem suite avg@8, 32K cap; trained to step 936, eval on reservation 14247743 2026-09-23"
+  },
+  {
+   "C": 256,
+   "K": 64,
+   "ratio": "4:1",
+   "key": "ck256k64",
+   "tag": "c256k64_bitrev_sameset32k",
+   "status": "done",
+   "heldout_ce": 0.4246,
+   "math500": null,
+   "suite_src": "446-problem suite avg@8, 32K cap; trained to step 948, eval in-node on reservation 14250939 2026-09-23"
+  },
+  {
+   "C": 1024,
+   "K": 256,
+   "ratio": "4:1",
+   "key": "ck1024k256",
+   "tag": "c1024k256_bitrev_sameset32k",
+   "status": "done",
+   "heldout_ce": 0.426,
+   "math500": null,
+   "suite_src": "446-problem suite avg@8, 32K cap; trained to step 903, eval in-node on reservation 14246449 2026-09-23"
+  }
+ ],
+ "allocation32k": [
+  {
+   "key": "uniform128",
+   "label": "uniform (every head 128)",
+   "heldout_ce": 0.4227,
+   "status": "done",
+   "math500": 88.3,
+   "math500_greedy_prev": 85.8
+  },
+  {
+   "key": "vpl",
+   "label": "per layer, measured on the trained model (\\method{})",
+   "heldout_ce": 0.4215,
+   "status": "done",
+   "math500": 87.5,
+   "math500_greedy_prev": 84.8
+  },
+  {
+   "key": "tph512",
+   "label": "per head, measured, $K_{\\max}{=}512$ (nested)",
+   "heldout_ce": 0.4209,
+   "status": "done",
+   "math500": null
+  },
+  {
+   "key": "vph",
+   "label": "per head, from full-KV attention statistics",
+   "heldout_ce": 0.4231,
+   "status": "done",
+   "math500": null
+  }
+ ],
+ "reported32k": {
+  "_doc": "Numbers REPORTED BY THE AUTHORS of decode-time KV methods on the released Qwen3-4B checkpoint (thinking mode presumed, none states it). Extracted 2026-09-21 from arXiv HTML: Random Attention 2609.03430v1 Table 1; VaSE 2606.03928 Table 2; LazyEviction 2506.15969v3 Table 1; R-KV 2505.24133v4 Table 2 (DS-R1-Distill-Qwen-14B, not Qwen3). Only drops vs each paper's own full-KV row are meaningful next to ours.",
+  "rows": [
+   {
+    "paper": "Random Attention",
+    "cite": "wang2026randomattention",
+    "model": "Qwen3-4B",
+    "cap": "32K",
+    "decoding": "T=0.6, 16 runs (AIME/HMMT), 2 (MATH)",
+    "budget": "$K{=}4096$ rows/head + 64 buffer ($\\approx$23\\% of a 17K trace)",
+    "cells": [
+     [
+      "MATH-500",
+      93.9,
+      87.4
+     ],
+     [
+      "AIME25+26",
+      64.2,
+      61.0
+     ],
+     [
+      "HMMT",
+      46.2,
+      43.8
+     ]
+    ],
+    "note": "random eviction; its R-KV rerun: AIME $-14.8$, HMMT $-9.1$"
+   },
+   {
+    "paper": "VaSE",
+    "cite": "chang2026vase",
+    "model": "Qwen3-4B",
+    "cap": "n.r.",
+    "decoding": "top-$p$, 16 runs",
+    "budget": "$K{=}N_{\\mathrm{avg}}/4$ (4096 on AIME/HMMT, 1024 on MATH)",
+    "cells": [
+     [
+      "MATH-500",
+      93.9,
+      81.8
+     ],
+     [
+      "AIME25",
+      66.4,
+      59.2
+     ],
+     [
+      "AIME26",
+      62.7,
+      62.1
+     ],
+     [
+      "HMMT25",
+      45.9,
+      44.4
+     ]
+    ],
+    "note": "value-norm-protecting eviction; its R-KV rerun: AIME25 $-16.8$, HMMT $-9.0$"
+   },
+   {
+    "paper": "LazyEviction",
+    "cite": "zhang2026lazyeviction",
+    "model": "Qwen3-4B",
+    "cap": "16K (AIME), 8K (MATH)",
+    "decoding": "n.r., single run, 30 problems",
+    "budget": "$r{=}30\\%$ of full KV (AIME), 50\\% (MATH)",
+    "cells": [
+     [
+      "MATH-500",
+      87.2,
+      85.8
+     ],
+     [
+      "AIME (year n.r.)",
+      60.0,
+      53.3
+     ]
+    ],
+    "note": "R-KV in the same table: AIME $-13.3$"
+   },
+   {
+    "paper": "R-KV",
+    "cite": "cai2025rkv",
+    "model": "DS-R1-Distill-Qwen-14B",
+    "cap": "32K",
+    "decoding": "T=0.6, 64 samples",
+    "budget": "3072 rows $=$ 24.8\\% of the mean trace",
+    "cells": [
+     [
+      "MATH-500 (768 rows, 27\\%)",
+      94.6,
+      88.8
+     ],
+     [
+      "AIME24",
+      65.7,
+      64.3
+     ]
+    ],
+    "note": "not Qwen3; own paper"
+   }
+  ]
+ },
+ "proto_followups": {
+  "_doc": "Prototyping runs after the ICLR freeze (2026-09-26/27): MODE=proto, 600M response tokens, own WSD decay, held-out CE over 192 pairs (math: math_sft_long_qwen3_400000, 1.29M resp tokens; code: code_sft_long_qwen3_120000 from nvidia/OpenCodeReasoning split_0, 1.40M resp tokens). Run dirs outputs/sft_ddp/*_proto_*.",
+  "math": [
+   {
+    "key": "u128",
+    "label": "Uniform, 128 rows",
+    "ce": 0.4389,
+    "minutes": 223
+   },
+   {
+    "key": "u128_codeq",
+    "label": "Uniform, 128 rows + dedicated code-row query projection",
+    "ce": 0.4394,
+    "minutes": 306
+   },
+   {
+    "key": "u128_codekv",
+    "label": "Uniform, 128 rows + dedicated code-row key/value projections",
+    "ce": 0.4384,
+    "minutes": 227
+   },
+   {
+    "key": "tpl_math",
+    "label": "Per-layer, headline schedule",
+    "ce": 0.4372,
+    "minutes": 273
+   }
+  ],
+  "code": [
+   {
+    "key": "code_vanilla",
+    "label": "Full KV",
+    "ce": 0.545,
+    "minutes": 218,
+    "ours": false
+   },
+   {
+    "key": "code_uni",
+    "label": "Uniform, 128 rows",
+    "ce": 0.5558,
+    "minutes": 237,
+    "ours": true
+   },
+   {
+    "key": "code_tpl",
+    "label": "Per-layer, schedule measured on mathematics",
+    "ce": 0.5544,
+    "minutes": 292,
+    "ours": true
+   },
+   {
+    "key": "code_tpl2",
+    "label": "Per-layer, schedule measured on code",
+    "ce": 0.5544,
+    "minutes": 290,
+    "ours": true
+   }
+  ],
+  "code_schedule": {
+   "file": "results/schedules/sched_trunc_perlayer_code_mean128.json",
+   "rows256": [
+    0,
+    13,
+    15,
+    18,
+    20,
+    24
+   ],
+   "rows64": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    10,
+    25,
+    31,
+    32,
+    35
+   ],
+   "math_rows256": [
+    0,
+    15,
+    18,
+    20,
+    21,
+    24
+   ],
+   "math_rows64": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    10,
+    30,
+    31,
+    32,
+    35
+   ],
+   "max_single_layer_cost": 0.00179,
+   "probe": "outputs/probe/quota_ablation_code_proto_uni.jsonl"
+  }
+ }
+}

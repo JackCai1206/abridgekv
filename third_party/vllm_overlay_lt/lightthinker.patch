@@ -1,0 +1,157 @@
+--- a/vllm/config/compresslm.py
++++ b/vllm/config/compresslm.py
+@@ -49,6 +49,14 @@
+     # follows the schedule (mean quota) instead of K_max, and decode steps need no custom masks (only the code
+     # step masks the block's own slots >= q and the static tail). Requires layer_code_quotas.
+     physical_layer_quotas: bool = False
++    # LightThinker thought-level compaction (boundary trigger): a block ends when the model SAMPLES boundary_token_id
++    # (the splitter) instead of after block_size tokens. The splitter is appended as content, the num_code_tokens
++    # cache tokens run as one CAUSAL code step (pause_xattn="causal"), the block's response content (thought +
++    # splitter) is evicted, and continue_token_id becomes the first content of the next block and is kept (it is
++    # never compacted); the next visible token is sampled from its logits. The prompt stays whole in block 0.
++    boundary_token_id: int | None = None
++    continue_token_id: int | None = None
++    continue_token: str = "<|lt_continue|>"
+ 
+     _code_token_ids: list[int] = field(default_factory=list, repr=False)
+     _initialized: bool = field(default=False, repr=False)
+@@ -106,7 +114,16 @@
+             )
+         if self.num_passes != 1:
+             raise ValueError("vLLM CompressLM decoding currently supports L=1 only")
+-        if self.pause_xattn != "full":
++        if self.uses_boundary_trigger:
++            if self.continue_token_id is None:
++                raise ValueError("boundary_token_id needs continue_token_id")
++            if self.pause_xattn != "causal":
++                raise ValueError("boundary-triggered (LightThinker) compaction needs pause_xattn='causal'")
++            if (self.replay_tail or self.retain_tail_kv or self.code_positions != "appended"
++                    or self.layer_code_quotas or self.packed_kv or self.retain_full_history_layers):
++                raise ValueError("boundary-triggered compaction supports appended positions only, "
++                                 "no tails, quotas, packed KV or selective history")
++        elif self.pause_xattn != "full":
+             raise ValueError(
+                 "vLLM CompressLM decoding currently requires pause_xattn='full'"
+             )
+@@ -233,6 +250,14 @@
+         if len(set(token_ids)) != len(token_ids):
+             raise ValueError("CompressLM code tokens must have distinct token IDs")
+ 
++        if self.uses_boundary_trigger:
++            ids = tokenizer.encode(self.continue_token, add_special_tokens=False)
++            if ids != [self.continue_token_id]:
++                raise ValueError(f"LightThinker continue token {self.continue_token!r} encodes to {ids}, "
++                                 f"config says {self.continue_token_id}")
++            if self.boundary_token_id in token_ids or self.boundary_token_id == self.continue_token_id:
++                raise ValueError("LightThinker splitter id collides with a cache/continue token")
++
+         self._code_token_ids = token_ids
+         self._initialized = True
+         return self
+@@ -245,10 +270,24 @@
+ 
+     @property
+     def code_tokens(self) -> list[str]:
+-        return [
++        """Internal tokens that must never be sampled (callers pass these as bad_words): the code rows, plus the
++        LightThinker continue token in boundary mode (the splitter is sampled on purpose and is not listed)."""
++        tokens = [
+             self.code_token_format.format(index)
+             for index in range(self.num_code_tokens)
+         ]
++        if self.uses_boundary_trigger:
++            tokens.append(self.continue_token)
++        return tokens
++
++    @property
++    def uses_boundary_trigger(self) -> bool:
++        return self.boundary_token_id is not None
++
++    @property
++    def code_step_causal(self) -> bool:
++        """Code rows attend causally among themselves (LightThinker cache tokens) instead of bidirectionally."""
++        return self.pause_xattn == "causal"
+ 
+     @property
+     def code_excluded_tail(self) -> int:
+--- a/vllm/v1/core/compresslm/processor.py
++++ b/vllm/v1/core/compresslm/processor.py
+@@ -85,11 +85,18 @@
+                 f"IDs cannot be sampled; missing {len(missing_bans)} IDs"
+             )
+ 
++        if self.config.uses_boundary_trigger:
++            if self.config.continue_token_id not in banned_singletons:
++                raise ValueError("LightThinker continue token must be passed as a bad word")
++            if self.config.boundary_token_id in banned_singletons:
++                raise ValueError("LightThinker splitter token must NOT be banned (it triggers compaction)")
++
+         prompt = list(request.prompt_token_ids)
+         if not prompt:
+             raise ValueError("CompressLM decoding requires a non-empty prompt")
+ 
+-        first = prompt[: self.config.block_size]
++        # boundary trigger: the whole prompt is block 0 (never compacted); blocks are thoughts
++        first = prompt if self.config.uses_boundary_trigger else prompt[: self.config.block_size]
+         state = CompressLMState(
+             original_prompt_token_ids=prompt,
+             pending_prompt_index=len(first),
+@@ -209,7 +216,23 @@
+         block = state.blocks[state.position_to_block[start]]
+         role_end = end == request.num_tokens or state.roles[end] != role
+ 
+-        if role == CONTENT:
++        if role == CONTENT and self.config.uses_boundary_trigger:
++            if sampled is not None and sampled == self.config.boundary_token_id and block.code_span is None:
++                # LightThinker: the sampled splitter closes the thought. Append it as content, stage the cache
++                # tokens right after it and hold the continue token as the next block's first content. The next
++                # step processes the splitter alone (a CONTENT run followed by CODE, so sampling is skipped), then
++                # the causal code step; _finish_block evicts thought + splitter.
++                internal_tokens = 1 + self.config.num_code_tokens + 1
++                if request.num_tokens + internal_tokens >= max_model_len:
++                    request.status = RequestStatus.FINISHED_LENGTH_CAPPED
++                    return visible, True
++                self._append_content(request, state, [sampled], is_prompt=False)
++                self._stage_codes(request, state, block)
++                state.held_sampled_token = self.config.continue_token_id
++            elif sampled is not None:
++                self._append_content(request, state, [sampled], is_prompt=False)
++
++        elif role == CONTENT:
+             if len(block.content_positions) == self.config.block_size and (
+                 end == block.content_positions[-1] + 1
+             ):
+@@ -478,6 +501,13 @@
+             state.compacted_block_ids.add(block.block_id)
+             return
+         positions = block.response_content_positions
++        if (
++            self.config.uses_boundary_trigger
++            and positions
++            and block.content_token_ids[len(block.prompt_content_positions)] == self.config.continue_token_id
++            and block.block_id > 0
++        ):
++            positions = positions[1:]       # the continue token opening this thought stays resident
+         if self.config.retain_tail_kv:
+             retained = set(block.retained_tail_positions)
+             positions = [position for position in positions if position not in retained]
+--- a/vllm/v1/worker/gpu_model_runner.py
++++ b/vllm/v1/worker/gpu_model_runner.py
+@@ -1883,7 +1883,7 @@
+             max_seq_len=max_seq_len,
+             block_table_tensor=block_table_gid_0,
+             slot_mapping=slot_mapping_gid_0,
+-            causal=not compresslm_code_step,
++            causal=not compresslm_code_step or bool(getattr(self.compresslm_config, "code_step_causal", False)),
+         )
+         selective_history_masks = None
+         if (
+@@ -2035,7 +2035,7 @@
+                 mask_requests,
+                 list(self.compresslm_config.distinct_layer_quotas),
+                 self.compresslm_config.num_code_tokens,
+-                causal=not compresslm_code_step,
++                causal=not compresslm_code_step or bool(getattr(self.compresslm_config, "code_step_causal", False)),
+                 device=self.device,
+             )
+ 

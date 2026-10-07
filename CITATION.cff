@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper."
+title: "AbridgeKV: Compressing Long Reasoning into the KV Cache of Learned Pause Tokens"
+type: software
+license: Apache-2.0
+authors:
+  - family-names: Cai
+    given-names: Jack
+  - family-names: Yang
+    given-names: Lijie
+  - family-names: Kontonis
+    given-names: Vasilis
+  - family-names: Papailiopoulos
+    given-names: Dimitris
+  - family-names: Garg
+    given-names: Shivam
+preferred-citation:
+  type: article
+  title: "AbridgeKV: Compressing Long Reasoning into the KV Cache of Learned Pause Tokens"
+  authors:
+    - family-names: Cai
+      given-names: Jack
+    - family-names: Yang
+      given-names: Lijie
+    - family-names: Kontonis
+      given-names: Vasilis
+    - family-names: Papailiopoulos
+      given-names: Dimitris
+    - family-names: Garg
+      given-names: Shivam
+  year: 2026

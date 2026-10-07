@@ -1,0 +1,152 @@
+{
+ "_doc": "Collect the saturation (max-concurrency) cells for the concurrency Pareto and the appendix serving table.\n\nONLY cells from ONE job on ONE node are used (outputs/bench_sat1job).\nSaturation throughput is not reproducible ACROSS jobs on this shared cluster (ck256k64: 3400.8 vs 2912.7 tok/s at an\nidentical configuration, 17% apart), while the ratio to vanilla measured INSIDE a job reproduces to ~5%. Concurrency\n(steady_running) is reproducible either way. So every throughput here is quoted against the vanilla cell of the same job.\n\nR-KV cannot run in that job (separate vLLM 0.25.1 venv) and no valid R-KV saturation cell exists: with the scoring cap\nlow enough to fit, preempted requests exceed it and fall back to Full KV (RKV-SKIP); with it high enough to avoid that,\nthe scoring transient OOMs against the KV pool (1.5x/2.0x/2.5x margins all failed, 2026-09-23). Its concurrency is\nmemory-derived and was measured consistently (108 at 128 requests, 107 at 512), so that alone is recorded.\n",
+ "job_dir": "outputs/bench_sat1job",
+ "arms": {
+  "ck1024k256": {
+   "reps": 1,
+   "tok_per_s": 3363.5,
+   "tok_per_s_all": [
+    3363.5
+   ],
+   "steady_running": 134,
+   "steady_running_all": [
+    134
+   ],
+   "step_ms_median": 36.746,
+   "requests": 512,
+   "tp_vs_vanilla": 1.4586811804757465,
+   "conc_vs_vanilla": 4.466666666666667
+  },
+  "ck256k64": {
+   "reps": 1,
+   "tok_per_s": 3354.8,
+   "tok_per_s_all": [
+    3354.8
+   ],
+   "steady_running": 166,
+   "steady_running_all": [
+    166
+   ],
+   "step_ms_median": 39.838,
+   "requests": 512,
+   "tp_vs_vanilla": 1.4549081683544032,
+   "conc_vs_vanilla": 5.533333333333333
+  },
+  "ck512k256": {
+   "reps": 1,
+   "tok_per_s": 3157.3,
+   "tok_per_s_all": [
+    3157.3
+   ],
+   "steady_running": 90,
+   "steady_running_all": [
+    90
+   ],
+   "step_ms_median": 38.449,
+   "requests": 512,
+   "tp_vs_vanilla": 1.369256456404363,
+   "conc_vs_vanilla": 3.0
+  },
+  "ck512k64": {
+   "reps": 1,
+   "tok_per_s": 3341.6,
+   "tok_per_s_all": [
+    3341.6
+   ],
+   "steady_running": 247,
+   "steady_running_all": [
+    247
+   ],
+   "step_ms_median": 40.367,
+   "requests": 512,
+   "tp_vs_vanilla": 1.4491835982392611,
+   "conc_vs_vanilla": 8.233333333333333
+  },
+  "gist": {
+   "reps": 1,
+   "tok_per_s": 3325.5,
+   "tok_per_s_all": [
+    3325.5
+   ],
+   "steady_running": 151,
+   "steady_running_all": [
+    151
+   ],
+   "step_ms_median": 39.44,
+   "requests": 512,
+   "tp_vs_vanilla": 1.4422013574170047,
+   "conc_vs_vanilla": 5.033333333333333
+  },
+  "tpl_physical": {
+   "reps": 2,
+   "tok_per_s": 2933.8,
+   "tok_per_s_all": [
+    2905.8,
+    2961.8
+   ],
+   "steady_running": 157.0,
+   "steady_running_all": [
+    157,
+    157
+   ],
+   "step_ms_median": 46.7355,
+   "requests": 512,
+   "tp_vs_vanilla": 1.27232907604571,
+   "conc_vs_vanilla": 5.233333333333333
+  },
+  "uni_plain": {
+   "reps": 1,
+   "tok_per_s": 3307.1,
+   "tok_per_s_all": [
+    3307.1
+   ],
+   "steady_running": 151,
+   "steady_running_all": [
+    151
+   ],
+   "step_ms_median": 39.633,
+   "requests": 512,
+   "tp_vs_vanilla": 1.4342216536201402,
+   "conc_vs_vanilla": 5.033333333333333
+  },
+  "vanilla_graphs": {
+   "reps": 2,
+   "tok_per_s": 2305.85,
+   "tok_per_s_all": [
+    2304.6,
+    2307.1
+   ],
+   "steady_running": 30.0,
+   "steady_running_all": [
+    30,
+    30
+   ],
+   "step_ms_median": 32.4465,
+   "requests": 512,
+   "tp_vs_vanilla": 1.0,
+   "conc_vs_vanilla": 1.0
+  }
+ },
+ "rkv": {
+  "rkv_b4096": {
+   "steady_running": 107.5,
+   "range": [
+    107,
+    108
+   ],
+   "bound": "point",
+   "throughput": null,
+   "note": "no valid saturation throughput cell"
+  },
+  "rkv_b2048": {
+   "steady_running": 211,
+   "range": [
+    211,
+    211
+   ],
+   "bound": "lower",
+   "throughput": null,
+   "note": "no valid saturation throughput cell; concurrency is a lower bound"
+  }
+ }
+}

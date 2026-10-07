@@ -1,0 +1,86 @@
+{
+ "brumo_2025": {
+  "source": "MathArena/brumo_2025",
+  "n": 30,
+  "era": "post_cutoff",
+  "file": "data/math_eval/brumo_2025.jsonl"
+ },
+ "cmimc_2025": {
+  "source": "MathArena/cmimc_2025",
+  "n": 40,
+  "era": "post_cutoff",
+  "file": "data/math_eval/cmimc_2025.jsonl"
+ },
+ "smt_2025": {
+  "source": "MathArena/smt_2025",
+  "n": 53,
+  "era": "post_cutoff",
+  "file": "data/math_eval/smt_2025.jsonl"
+ },
+ "apex_2025": {
+  "source": "MathArena/apex_2025",
+  "n": 12,
+  "era": "excluded_too_hard",
+  "file": "data/math_eval/apex_2025.jsonl"
+ },
+ "aime_2026": {
+  "source": "MathArena/aime_2026",
+  "n": 30,
+  "era": "post_cutoff",
+  "file": "data/math_eval/aime_2026.jsonl"
+ },
+ "hmmt_feb_2023": {
+  "source": "MathArena/hmmt_feb_2023",
+  "n": 30,
+  "era": "pre_2025",
+  "file": "data/math_eval/hmmt_feb_2023.jsonl"
+ },
+ "aime_2023": {
+  "source": "MathArena/aime_2023_I+II",
+  "n": 30,
+  "era": "pre_2025",
+  "file": "data/math_eval/aime_2023.jsonl"
+ },
+ "aime_2022": {
+  "source": "AI-MO/aimo-validation-aime (url 2022)",
+  "n": 30,
+  "era": "pre_2025",
+  "file": "data/math_eval/aime_2022.jsonl"
+ },
+ "amc_2022_2023": {
+  "source": "AI-MO/aimo-validation-amc",
+  "n": 83,
+  "era": "pre_2025",
+  "file": "data/math_eval/amc_2022_2023.jsonl"
+ },
+ "beyond_aime": {
+  "source": "ByteDance-Seed/BeyondAIME (test)",
+  "n": 100,
+  "era": "excluded_too_hard",
+  "file": "data/math_eval/beyond_aime.jsonl"
+ },
+ "aime_2024": {
+  "source": "MathArena/aime_2024_I+II",
+  "n": 30,
+  "era": "pre_2025",
+  "file": "eval_aime (aime2024)"
+ },
+ "aime_2025": {
+  "source": "MathArena/aime_2025",
+  "n": 30,
+  "era": "post_cutoff",
+  "file": "eval_aime (aime2025)"
+ },
+ "hmmt_feb_2024": {
+  "source": "MathArena/hmmt_feb_2024",
+  "n": 30,
+  "era": "pre_2025",
+  "file": "data/math_eval/hmmt_feb_2024.jsonl"
+ },
+ "hmmt_feb_2025": {
+  "source": "MathArena/hmmt_feb_2025",
+  "n": 30,
+  "era": "post_cutoff",
+  "file": "data/math_eval/hmmt_feb_2025.jsonl"
+ }
+}

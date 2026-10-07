@@ -1,0 +1,189 @@
+{
+ "_doc": "Run-to-completion capacity cells (scripts/bench_decode.py --mode complete) -> paper/data/completion.json.\nOnly full-scale (len_scale 1), fully finished, H100 runs of the paired workload in data/workload_complete.json.\nThe Pareto saturated panel plots s_per_problem directly: wall time to finish all N requests / N.",
+ "dir": "outputs/bench_complete_h100_final",
+ "n": 512,
+ "arms": {
+  "ck1024k256": {
+   "reps": 1,
+   "s_per_problem": 3.1093,
+   "s_all": [
+    3.1093
+   ],
+   "t90_s": 1415.935,
+   "mean_len": 13022.763671875,
+   "tok_per_s": 4192.2,
+   "max_running": 128,
+   "steady_running": 9,
+   "max_num_seqs": 128,
+   "preemptions": 0,
+   "vs_vanilla": 0.32972778078240494
+  },
+  "ck256k64": {
+   "reps": 1,
+   "s_per_problem": 3.0744,
+   "s_all": [
+    3.0744
+   ],
+   "t90_s": 1358.897,
+   "mean_len": 12769.275390625,
+   "tok_per_s": 4169.4,
+   "max_running": 128,
+   "steady_running": 2,
+   "max_num_seqs": 128,
+   "preemptions": 0,
+   "vs_vanilla": 0.3260267871345401
+  },
+  "ck512k256": {
+   "reps": 1,
+   "s_per_problem": 5.3547,
+   "s_all": [
+    5.3547
+   ],
+   "t90_s": 2464.806,
+   "mean_len": 12994.3671875,
+   "tok_per_s": 2431.3,
+   "max_running": 64,
+   "steady_running": 21,
+   "max_num_seqs": 64,
+   "preemptions": 0,
+   "vs_vanilla": 0.567842713072249
+  },
+  "ck512k64": {
+   "reps": 1,
+   "s_per_problem": 2.1988,
+   "s_all": [
+    2.1988
+   ],
+   "t90_s": 982.024,
+   "mean_len": 13736.6640625,
+   "tok_per_s": 6259.6,
+   "max_running": 256,
+   "steady_running": 8,
+   "max_num_seqs": 256,
+   "preemptions": 168,
+   "vs_vanilla": 0.2331732043818068
+  },
+  "gist": {
+   "reps": 1,
+   "s_per_problem": 3.1779,
+   "s_all": [
+    3.1779
+   ],
+   "t90_s": 1455.799,
+   "mean_len": 13531.94140625,
+   "tok_per_s": 4266.1,
+   "max_running": 128,
+   "steady_running": 10,
+   "max_num_seqs": 128,
+   "preemptions": 0,
+   "vs_vanilla": 0.33700251328221936
+  },
+  "rkv_b2048": {
+   "reps": 1,
+   "s_per_problem": 13.8354,
+   "s_all": [
+    13.8354
+   ],
+   "t90_s": 7065.385,
+   "mean_len": 22374.28515625,
+   "tok_per_s": 1617.1,
+   "max_running": 256,
+   "steady_running": 109,
+   "max_num_seqs": 256,
+   "preemptions": 514,
+   "vs_vanilla": 1.4671841695033883
+  },
+  "rkv_b4096": {
+   "reps": 1,
+   "s_per_problem": 27.5994,
+   "s_all": [
+    27.5994
+   ],
+   "t90_s": 13209.969,
+   "mean_len": 18323.33984375,
+   "tok_per_s": 663.9,
+   "max_running": 256,
+   "steady_running": 39,
+   "max_num_seqs": 256,
+   "preemptions": 906,
+   "vs_vanilla": 2.9267966786498265
+  },
+  "tpl_physical": {
+   "reps": 1,
+   "s_per_problem": 3.8026,
+   "s_all": [
+    3.8026
+   ],
+   "t90_s": 1739.021,
+   "mean_len": 13368.375,
+   "tok_per_s": 3522.4,
+   "max_running": 128,
+   "steady_running": 9,
+   "max_num_seqs": 128,
+   "preemptions": 0,
+   "vs_vanilla": 0.4032492391223661
+  },
+  "uni_plain": {
+   "reps": 1,
+   "s_per_problem": 3.1954,
+   "s_all": [
+    3.1954
+   ],
+   "t90_s": 1431.806,
+   "mean_len": 13419.41796875,
+   "tok_per_s": 4207.4,
+   "max_running": 128,
+   "steady_running": 13,
+   "max_num_seqs": 128,
+   "preemptions": 0,
+   "vs_vanilla": 0.3388583123893148
+  },
+  "vanilla_graphs": {
+   "reps": 1,
+   "s_per_problem": 9.4299,
+   "s_all": [
+    9.4299
+   ],
+   "t90_s": 4383.201,
+   "mean_len": 13179.25,
+   "tok_per_s": 1397.5,
+   "max_running": 32,
+   "steady_running": 32,
+   "max_num_seqs": 32,
+   "preemptions": 42,
+   "vs_vanilla": 1.0
+  }
+ },
+ "cap_sweep": {
+  "ck1024k256": {
+   "128": 3.1093
+  },
+  "ck256k64": {
+   "128": 3.0744
+  },
+  "ck512k256": {
+   "64": 5.3547
+  },
+  "ck512k64": {
+   "256": 2.1988
+  },
+  "gist": {
+   "128": 3.1779
+  },
+  "rkv_b2048": {
+   "256": 13.8354
+  },
+  "rkv_b4096": {
+   "256": 27.5994
+  },
+  "tpl_physical": {
+   "128": 3.8026
+  },
+  "uni_plain": {
+   "128": 3.1954
+  },
+  "vanilla_graphs": {
+   "32": 9.4299
+  }
+ }
+}

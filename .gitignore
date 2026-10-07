@@ -1,0 +1,8 @@
+outputs/
+__pycache__/
+*.pyc
+*.pkl
+*.log
+paper/figures/
+paper/tables/
+.venv*/

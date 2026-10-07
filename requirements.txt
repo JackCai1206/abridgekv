@@ -1,0 +1,13 @@
+# Training, probes, export (tested: Python 3.12, CUDA 12.8)
+torch==2.8.0
+transformers==5.3.0
+numpy
+datasets
+huggingface_hub
+safetensors
+math-verify==0.9.0
+# Figures and tables
+matplotlib
+# Serving and evaluation run in a separate environment:
+#   pip install vllm==0.13.0 && bash third_party/vllm_overlay/install_overlay.sh
+# (vLLM 0.13.0 pins torch 2.9.0 and transformers 4.57; keep it apart from the training environment.)

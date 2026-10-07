@@ -1,0 +1,66 @@
+--- a/vllm/v1/worker/gpu_model_runner.py
++++ b/vllm/v1/worker/gpu_model_runner.py
+@@ -2062,6 +2062,7 @@
+         # (the block's own code slots >= the group's quota, plus the tail-exclusive range),
+         # each in that group's compacted layout. Decode steps run the stock causal path.
+         group_code_masks: dict[int, torch.Tensor] | None = None
++        self._compresslm_trim = {}   # ABRIDGEKV_TRIM_CODE_KV: per step, never carried over
+         if (
+             self.compresslm_config is not None
+             and self.compresslm_config.uses_physical_layer_quotas
+@@ -2084,8 +2085,14 @@
+             # batch (FlashInfer reorder, decode threshold 1), so the masks cover only the code-row (prefill) slice and
+             # the decodes stay on the decode kernel, exactly as on a plain decode step.
+             mask_prefill_only = os.environ.get("COMPRESSLM_MIXED_CODE") == "1"
++            # ABRIDGEKV_TRIM_CODE_KV: when the only hidden columns of a group are the current block's code slots
++            # [q, K), which are the LAST K - q positions of every code request's sequence, hiding them equals
++            # attending over a KV length shortened by K - q: no custom mask, a plain noncausal ragged prefill plan.
++            trim_code_kv = os.environ.get("COMPRESSLM_TRIM_CODE_KV", "1") == "1"
++            self._compresslm_trim = {}
+             for gid, quota in enumerate(group_quotas):
+                 mask_requests = []
++                trim_rows = []
+                 needs_mask = False
+                 seen_prefill = False
+                 for req_idx, req_id in enumerate(self.input_batch.req_ids[:num_reqs]):
+@@ -2119,8 +2126,17 @@
+                     if (spans and quota < K) or excluded is not None:
+                         needs_mask = True
+                     mask_requests.append((query_len, seq_len, spans, excluded))
++                    trim_rows.append(
++                        req_idx
++                        if excluded is None and query_len == K and quota < K
++                        and list(map(tuple, spans)) == [(seq_len - K, seq_len)]
++                        else None
++                    )
+                 if not needs_mask:
+                     continue        # nothing to hide in this group: stock noncausal attention
++                if trim_code_kv and trim_rows and all(r is not None for r in trim_rows):
++                    self._compresslm_trim[gid] = (trim_rows, K - quota)
++                    continue
+                 group_code_masks[gid] = build_layer_quota_masks(
+                     mask_requests, [quota], K, causal=False, device=self.device
+                 )[quota]
+@@ -2220,6 +2236,22 @@
+                     cm.seq_lens = group_seq_lens.gpu[:num_reqs_padded]
+                     cm._seq_lens_cpu = group_seq_lens.cpu[:num_reqs_padded]
+                     cm.max_seq_len = max_seq_len_by_group[kv_cache_gid]
++            trim = (
++                getattr(self, "_compresslm_trim", {}).get(kv_cache_gid)
++                if compresslm_code_step and not for_cudagraph_capture else None
++            )
++            if trim is not None:   # ABRIDGEKV_TRIM_CODE_KV: shorten the code requests' KV length by K - q
++                rows, cut = trim
++                if not getattr(self, "_compresslm_trim_logged", False):
++                    self._compresslm_trim_logged = True
++                    logger.info("[compresslm-trim] code step: group %d KV length -%d for %d code requests (no mask)",
++                                kv_cache_gid, cut, len(rows))
++                lens_cpu = cm._seq_lens_cpu.clone()
++                lens_cpu[torch.tensor(rows, dtype=torch.long)] -= cut
++                pinned = lens_cpu.pin_memory() if self.pin_memory else lens_cpu
++                cm.seq_lens = pinned.to(self.device, non_blocking=True)
++                cm._seq_lens_cpu = lens_cpu
++                cm.max_seq_len = int(lens_cpu[:num_reqs].max())
+ 
+             if self.speculative_config and spec_decode_common_attn_metadata is None:
+                 if isinstance(self.drafter, EagleProposer):

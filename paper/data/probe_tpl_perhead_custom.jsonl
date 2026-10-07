@@ -1,0 +1,5 @@
+{"name": "custom:trained(mean128)", "kind": "custom", "set": "full", "n_examples": 192, "resp_tokens": 1285970, "held_out_ce": 0.4215323954601588, "quota_hist": {"256": 48, "64": 96, "128": 144}, "sec": 149.5}
+{"name": "custom:concentrate(mean109)", "kind": "custom", "set": "full", "n_examples": 192, "resp_tokens": 1285970, "held_out_ce": 0.4256810436196056, "quota_hist": {"256": 5, "128": 187, "64": 96}, "sec": 121.2}
+{"name": "custom:refine_mean128(mean128)", "kind": "custom", "set": "full", "n_examples": 192, "resp_tokens": 1285970, "held_out_ce": 0.4238706621735515, "quota_hist": {"256": 48, "128": 144, "64": 96}, "sec": 123.9}
+{"name": "custom:L24_cheap_heads->128(mean125)", "kind": "custom", "set": "full", "n_examples": 192, "resp_tokens": 1285970, "held_out_ce": 0.4219629189827701, "quota_hist": {"256": 42, "64": 96, "128": 150}, "sec": 122.4}
+{"name": "custom:L15_cheap_heads->128(mean125)", "kind": "custom", "set": "full", "n_examples": 192, "resp_tokens": 1285970, "held_out_ce": 0.4218208410581552, "quota_hist": {"256": 41, "64": 96, "128": 151}, "sec": 122.3}

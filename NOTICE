@@ -1,0 +1,56 @@
+AbridgeKV
+Copyright 2026 Jack Cai, Lijie Yang, Vasilis Kontonis, Dimitris Papailiopoulos, Shivam Garg
+
+This repository is licensed under the Apache License, Version 2.0 (see LICENSE).
+It includes or derives from the following third-party work.
+
+------------------------------------------------------------------------------
+vLLM (https://github.com/vllm-project/vllm), Apache License 2.0
+------------------------------------------------------------------------------
+third_party/vllm_overlay/vllm/ contains files from vLLM 0.13.0, modified to
+implement pause-token compression, cache compaction and per-layer quotas. The
+patches under third_party/vllm_overlay_async/ and third_party/vllm_overlay_lt/
+apply to the same files. The upstream license is third_party/vllm_overlay/LICENSE.
+
+------------------------------------------------------------------------------
+microsoft/memento (https://github.com/microsoft/memento), MIT License
+------------------------------------------------------------------------------
+third_party/vllm_overlay began as the microsoft/memento vLLM overlay: its
+block-masking scheduler, request tracking and cache compaction (28 of the
+overlay's Python files, plus install_overlay.sh) are carried over and
+modified. The pause-token compression, per-layer quotas and packed KV storage
+(vllm/config/compresslm.py, vllm/v1/core/compresslm/, vllm/v1/worker/compresslm_*.py
+and related files) are new.
+
+The microsoft/memento license:
+
+  MIT License
+
+  Copyright (c) 2026 Microsoft
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+
+------------------------------------------------------------------------------
+Baselines (not redistributed)
+------------------------------------------------------------------------------
+abridgekv/lightthinker.py is our reimplementation of LightThinker
+(https://github.com/zjunlp/LightThinker, MIT). scripts/test_lightthinker_mask.py
+compares it against their code, imported from a separate clone.
+R-KV results use the authors' own vLLM port (https://github.com/Zefan-Cai/R-KV);
+launch/eval_suite.sh only sets its environment variables.

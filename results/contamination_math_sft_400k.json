@@ -1,0 +1,3805 @@
+{
+ "threshold": 0.5,
+ "ngram": 13,
+ "per_set": {
+  "aime_2022": {
+   "n": 30,
+   "flagged": 19
+  },
+  "aime_2023": {
+   "n": 30,
+   "flagged": 17
+  },
+  "aime2024_I": {
+   "n": 15,
+   "flagged": 0
+  },
+  "aime2024_II": {
+   "n": 15,
+   "flagged": 0
+  },
+  "aime2025": {
+   "n": 30,
+   "flagged": 0
+  },
+  "aime_2026": {
+   "n": 30,
+   "flagged": 0
+  },
+  "amc_2022_2023": {
+   "n": 83,
+   "flagged": 32
+  },
+  "hmmt_feb_2023": {
+   "n": 30,
+   "flagged": 0
+  },
+  "hmmt_feb_2024": {
+   "n": 30,
+   "flagged": 0
+  },
+  "hmmt_feb_2025": {
+   "n": 30,
+   "flagged": 0
+  },
+  "brumo_2025": {
+   "n": 30,
+   "flagged": 1
+  },
+  "cmimc_2025": {
+   "n": 40,
+   "flagged": 0
+  },
+  "smt_2025": {
+   "n": 53,
+   "flagged": 0
+  }
+ },
+ "flagged": [
+  {
+   "set": "aime_2022",
+   "idx": 1,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 84701,
+   "train_prompt": "Three spheres with radii $11$, $13$, and $19$ are mutually externally tangent. A plane intersects the spheres in three congruent circles centered at $A$, $B$, and $C$, respectively, and the centers of the spheres all lie on the same side of this plane. Suppose that $AB^2 = 560$. Find $AC^2$.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 2,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 47919,
+   "train_prompt": "Let $ABCD$ be a parallelogram with $\\angle BAD < 90^\\circ.$ A circle tangent to sides $\\overline{DA},$  $\\overline{AB},$ and $\\overline{BC}$ intersects diagonal $\\overline{AC}$ at points $P$ and $Q$ with $AP < AQ,$ as shown. Suppose that $AP=3,$  $PQ=9,$ and $QC=16.$ Then the area of $ABCD$ can be expressed in the form $m\\sqrt{n},$ where $m$ and $n$ are positive integers, and $n$ is not divisible "
+  },
+  {
+   "set": "aime_2022",
+   "idx": 3,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 26784,
+   "train_prompt": "For any finite set $X$, let $| X |$ denote the number of elements in $X$. Define $$S_n = \\sum | A \\cap B |,$$ where the sum is taken over all ordered pairs $(A, B)$ such that $A$ and $B$ are subsets of $\\left\\{ 1, 2, 3,  \\cdots, n \\right\\}$ with $|A| = |B|$.\nFor example, $S_2 = 4$ because the sum is taken over the pairs of subsets $$(A, B) \\in \\left\\{ (\\emptyset, \\emptyset), ( \\{1\\}, \\{1\\} ), ( \\{"
+  },
+  {
+   "set": "aime_2022",
+   "idx": 4,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 8182,
+   "train_prompt": "Let $S$ be the set of all rational numbers that can be expressed as a repeating decimal in the form $0.\\overline{abcd},$ where at least one of the digits $a,$  $b,$  $c,$ or $d$ is nonzero. Let $N$ be the number of distinct numerators obtained when numbers in $S$ are written as fractions in lowest terms. For example, both $4$ and $410$ are counted among the distinct numerators for numbers in $S$ b"
+  },
+  {
+   "set": "aime_2022",
+   "idx": 6,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 105515,
+   "train_prompt": "Let $x$, $y$, and $z$ be positive real numbers satisfying the system of equations\n\\begin{align*}\n\\sqrt{2x - xy} + \\sqrt{2y - xy} & = 1\\\\\n\\sqrt{2y - yz} + \\sqrt{2z - yz} & = \\sqrt{2}\\\\\n\\sqrt{2z - zx} + \\sqrt{2x - zx} & = \\sqrt{3}.\n\\end{align*}\nThen $\\big[ (1-x)(1-y)(1-z) \\big]^2$ can be written as $\\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.\n\nPlease reason st"
+  },
+  {
+   "set": "aime_2022",
+   "idx": 8,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 25602,
+   "train_prompt": "In isosceles trapezoid $ABCD$, parallel bases $\\overline{AB}$ and $\\overline{CD}$ have lengths $500$ and $650$, respectively, and $AD=BC=333$. The angle bisectors of $\\angle{A}$ and $\\angle{D}$ meet at $P$, and the angle bisectors of $\\angle{B}$ and $\\angle{C}$ meet at $Q$. Find $PQ$.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 10,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 87480,
+   "train_prompt": "A straight river that is $264$ meters wide flows from west to east at a rate of $14$ meters per minute. Melanie and Sherry sit on the south bank of the river with Melanie a distance of $D$ meters downstream from Sherry. Relative to the water, Melanie swims at $80$ meters per minute, and Sherry swims at $60$ meters per minute. At the same time, Melanie and Sherry begin swimming in straight lines to"
+  },
+  {
+   "set": "aime_2022",
+   "idx": 13,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 110289,
+   "train_prompt": "Equilateral triangle $\\triangle ABC$ is inscribed in circle $\\omega$ with radius $18$. Circle $\\omega_A$ is tangent to sides $\\overline{AB}$ and $\\overline{AC}$ and is internally tangent to $\\omega$. Circles $\\omega_B$ and $\\omega_C$ are defined analogously. Circles $\\omega_A$, $\\omega_B$, and $\\omega_C$ meet in six points---two points for each pair of circles. The three intersection points closes"
+  },
+  {
+   "set": "aime_2022",
+   "idx": 14,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 80136,
+   "train_prompt": "Ellina has twelve blocks, two each of red ( $\\textbf{R}$ ), blue ( $\\textbf{B}$ ), yellow ( $\\textbf{Y}$ ), green ( $\\textbf{G}$ ), orange ( $\\textbf{O}$ ), and purple ( $\\textbf{P}$ ). Call an arrangement of blocks $\\textit{even}$ if there is an even number of blocks between each pair of blocks of the same color. For example, the arrangement $$\\textbf{R B B Y G G Y R O P P O}$$ is even. Ellina ar"
+  },
+  {
+   "set": "aime_2022",
+   "idx": 15,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 155069,
+   "train_prompt": "Adults made up $\\frac5{12}$ of the crowd of people at a concert. After a bus carrying $50$ more people arrived, adults made up $\\frac{11}{25}$ of the people at the concert. Find the minimum number of adults who could have been at the concert after the bus arrived.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 16,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 167067,
+   "train_prompt": "Find the remainder when $$\\binom{\\binom{3}{2}}{2} + \\binom{\\binom{4}{2}}{2} + \\dots + \\binom{\\binom{40}{2}}{2}$$ is divided by $1000$.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 17,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 60808,
+   "train_prompt": "Let $ABCD$ be a convex quadrilateral with $AB=2, AD=7,$ and $CD=3$ such that the bisectors of acute angles $\\angle{DAB}$ and $\\angle{ADC}$ intersect at the midpoint of $\\overline{BC}.$ Find the square of the area of $ABCD.$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 19,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 28322,
+   "train_prompt": "There is a polynomial $P(x)$ with integer coefficients such that $$P(x)=\\frac{(x^{2310}-1)^6}{(x^{105}-1)(x^{70}-1)(x^{42}-1)(x^{30}-1)}$$ holds for every $0<x<1.$ Find the coefficient of $x^{2022}$ in $P(x)$.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 22,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 196547,
+   "train_prompt": "Azar, Carl, Jon, and Sergey are the four players left in a singles tennis tournament. They are randomly assigned opponents in the semifinal matches, and the winners of those matches play each other in the final match to determine the winner of the tournament. When Azar plays Carl, Azar will win the match with probability $\\frac23$. When either Azar or Carl plays either Jon or Sergey, Azar or Carl "
+  },
+  {
+   "set": "aime_2022",
+   "idx": 23,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 30804,
+   "train_prompt": "A right square pyramid with volume $54$ has a base with side length $6.$ The five vertices of the pyramid all lie on a sphere with radius $\\frac mn$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 24,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 18984,
+   "train_prompt": "There is a positive real number \\( x \\) not equal to either \\( \\frac{1}{20} \\) or \\( \\frac{1}{2} \\) such that \n\\[ \\log_{20x} (22x) = \\log_{2x} (202x). \\]\nThe value \\( \\log_{20x} (22x) \\) can be written as \\( \\log_{10} \\left( \\frac{m}{n} \\right) \\), where \\( m \\) and \\( n \\) are relatively prime positive integers. Find \\( m+n \\).\n\nPlease reason step by step, and put your final answer within \\boxed{"
+  },
+  {
+   "set": "aime_2022",
+   "idx": 25,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 60965,
+   "train_prompt": "Twenty distinct points are marked on a circle and labeled $1$ through $20$ in clockwise order. A line segment is drawn between every pair of points whose labels differ by a prime number. Find the number of triangles formed whose vertices are among the original $20$ points.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 26,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 23898,
+   "train_prompt": "Let $x_1\\leq x_2\\leq \\cdots\\leq x_{100}$ be real numbers such that $|x_1| + |x_2| + \\cdots + |x_{100}| = 1$ and $x_1 + x_2 + \\cdots + x_{100} = 0$. Among all such $100$ -tuples of numbers, the greatest value that $x_{76} - x_{16}$ can achieve is $\\tfrac mn$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 27,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 32278,
+   "train_prompt": "A circle with radius $6$ is externally tangent to a circle with radius $24$. Find the area of the triangular region bounded by the three common tangent lines of these two circles.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 0,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 6412,
+   "train_prompt": "Five men and nine women stand equally spaced around a circle in random order. The probability that every man stands diametrically opposite a woman is $\\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m+n.$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 2,
+   "frac_any": 0.755,
+   "frac_best_single": 0.755,
+   "best_pair": 74151,
+   "train_prompt": "A plane contains $40$ lines, no $2$ of which are parallel. Suppose that there are $3$ points where exactly $3$ lines intersect, $4$ points where exactly $4$ lines intersect, $5$ points where exactly $5$ lines intersect, $6$ points where exactly $6$ lines intersect, and no points where more than $6$ lines intersect. Find the number of points where exactly $2$ lines intersect.\n\nPlease reason step by"
+  },
+  {
+   "set": "aime_2023",
+   "idx": 3,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 6989,
+   "train_prompt": "The sum of all positive integers $m$ for which $\\frac{13!}{m}$ is a perfect square can be written as $2^{a}3^{b}5^{c}7^{d}11^{e}13^{f}$, where $a, b, c, d, e,$ and $f$ are positive integers. Find $a+b+c+d+e+f$.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 4,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 5818,
+   "train_prompt": "Let \\( P \\) be a point on the circumcircle of square \\( ABCD \\) such that \\( PA \\cdot PC = 56 \\) and \\( PB \\cdot PD = 90 \\). What is the area of square \\( ABCD \\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 5,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 35991,
+   "train_prompt": "Alice knows that 3 red cards and 3 black cards will be revealed to her one at a time in random order. Before each card is revealed, Alice must guess its color. If Alice plays optimally, the expected number of cards she will guess correctly is $\\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m+n.$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 7,
+   "frac_any": 0.815,
+   "frac_best_single": 0.556,
+   "best_pair": 52781,
+   "train_prompt": "Rhombus $ABCD$ has $\\angle BAD < 90^\\circ.$ There is a point $P$ on the incircle of the rhombus such that the distances from $P$ to the lines $DA,AB,$ and $BC$ are $9,$  $5,$ and $16,$ respectively. Find the perimeter of $ABCD.$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 8,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 138896,
+   "train_prompt": "Find the number of cubic polynomials \\( p(x) = x^3 + ax^2 + bx + c \\), where \\( a \\), \\( b \\), and \\( c \\) are integers in \\(\\{-20, -19, -18, \\dots, 18, 19, 20\\}\\), such that there is a unique integer \\( m \\neq 2 \\) with \\( p(m) = p(2) \\).\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 10,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 31044,
+   "train_prompt": "Find the number of subsets of $\\{1,2,3,\\ldots,10\\}$ that contain exactly one pair of consecutive integers. Examples of such subsets are $\\{\\mathbf{1},\\mathbf{2},5\\}$ and $\\{1,3,\\mathbf{6},\\mathbf{7},10\\}.$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 11,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 69415,
+   "train_prompt": "Let $\\triangle ABC$ be an equilateral triangle with side length $55$. Points $D$, $E$, and $F$ lie on sides $\\overline{BC}$, $\\overline{CA}$, and $\\overline{AB}$, respectively, with $BD=7$, $CE=30$, and $AF=40$. A unique point $P$ inside $\\triangle ABC$ has the property that \\[\\measuredangle AEP=\\measuredangle BFP=\\measuredangle CDP.\\] Find $\\tan^{2}\\left(\\measuredangle AEP\\right)$.\n\nPlease reason"
+  },
+  {
+   "set": "aime_2023",
+   "idx": 15,
+   "frac_any": 0.964,
+   "frac_best_single": 0.964,
+   "best_pair": 237825,
+   "train_prompt": "The numbers of apples growing on each of six apple trees form an arithmetic sequence where the greatest number of apples growing on any of the six trees is double the least number of apples growing on any of the six trees. The total number of apples growing on all six trees is $990.$ Find the greatest number of apples growing on any of the six trees.\n\nPlease reason step by step, and put your final"
+  },
+  {
+   "set": "aime_2023",
+   "idx": 16,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 106245,
+   "train_prompt": "Recall that a palindrome is a number that reads the same forward and backward. Find the greatest integer less than $1000$ that is a palindrome both when written in base ten and when written in base eight, such as $292 = 444_{\\text{eight}}.$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 17,
+   "frac_any": 0.706,
+   "frac_best_single": 0.706,
+   "best_pair": 52200,
+   "train_prompt": "Let $\\triangle ABC$ be an isosceles triangle with $\\angle A = 90^\\circ.$ There exists a point $P$ inside $\\triangle ABC$ such that $\\angle PAB = \\angle PBC = \\angle PCA$ and $AP = 10.$ Find the area of $\\triangle ABC.$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 18,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 661,
+   "train_prompt": "Let $x,y,$ and $z$ be real numbers satisfying the system of equations \\begin{align*} xy + 4z &= 60 \\\\ yz + 4x &= 60 \\\\ zx + 4y &= 60. \\end{align*} Let $S$ be the set of possible values of $x.$ Find the sum of the squares of the elements of $S.$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 19,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 120202,
+   "train_prompt": "Let \\( S \\) be the set of all positive rational numbers \\( r \\) such that when the two numbers \\( r \\) and \\( 55r \\) are written as fractions in lowest terms, the sum of the numerator and denominator of one fraction is the same as the sum of the numerator and denominator of the other fraction. The sum of all the elements of \\( S \\) can be expressed in the form \\( \\frac{p}{q} \\), where \\( p \\) and "
+  },
+  {
+   "set": "aime_2023",
+   "idx": 21,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 109474,
+   "train_prompt": "Each vertex of a regular dodecagon ( $12$ -gon) is to be colored either red or blue, and thus there are $2^{12}$ possible colorings. Find the number of these colorings with the property that no four vertices colored the same color are the four vertices of a rectangle.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 22,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 111800,
+   "train_prompt": "Let $\\omega=\\cos\\frac{2\\pi}{7}+i\\cdot\\sin\\frac{2\\pi}{7}$, where $i=\\sqrt{-1}$. Find\n$$\\prod_{k=0}^{6}(\\omega^{3k}+\\omega^k+1).$$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 26,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 20365,
+   "train_prompt": "In $\\triangle ABC$ with side lengths $AB=13$, $BC=14$, and $CA=15$, let $M$ be the midpoint of $\\overline{BC}$. Let $P$ be the point on the circumcircle of $\\triangle ABC$ such that $M$ is on $\\overline{AP}$. There exists a unique point $Q$ on segment $\\overline{AM}$ such that $\\angle PBQ = \\angle PCQ$. Then $AQ$ can be written as $\\frac{m}{\\sqrt{n}}$, where $m$ and $n$ are relatively prime positi"
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 2,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 166508,
+   "train_prompt": "What is the product of all real numbers $x$ such that the distance on the number line between $\\log_6x$ and $\\log_69$ is twice the distance on the number line between $\\log_610$ and $1$?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 4,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 173414,
+   "train_prompt": "Let $\\mathcal{R}$ be the region in the complex plane consisting of all complex numbers $z$ that can be written as the sum of complex numbers $z_1$ and $z_2$, where $z_1$ lies on the segment with endpoints $3$ and $4i$, and $z_2$ has magnitude at most $1$. What integer is closest to the area of $\\mathcal{R}$?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 6,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 25199,
+   "train_prompt": "The roots of the polynomial \\(10x^3 - 39x^2 + 29x - 6\\) are the height, length, and width of a rectangular box (right rectangular prism). A new rectangular box is formed by lengthening each edge of the original box by 2 units. What is the volume of the new box?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 8,
+   "frac_any": 0.711,
+   "frac_best_single": 0.711,
+   "best_pair": 123205,
+   "train_prompt": "Suppose \\( a \\) is a real number such that the equation\n\\[ a \\cdot (\\sin x + \\sin(2x)) = \\sin(3x) \\]\nhas more than one solution in the interval \\( (0, \\pi) \\). The set of all such \\( a \\) can be written in the form \\( (p, q) \\cup (q, r) \\), where \\( p \\), \\( q \\), and \\( r \\) are real numbers with \\( p < q < r \\). What is \\( p + q + r \\)?\n\nPlease reason step by step, and put your final answer with"
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 9,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 120025,
+   "train_prompt": "Let \\( T_k \\) be the transformation of the coordinate plane that first rotates the plane \\( k \\) degrees counterclockwise around the origin and then reflects the plane across the \\( y \\)-axis. What is the least positive integer \\( n \\) such that performing the sequence of transformations \\( T_1, T_2, T_3, \\dots, T_n \\) returns the point \\( (1,0) \\) back to itself?\n\nPlease reason step by step, and "
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 11,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 264652,
+   "train_prompt": "The sum of three numbers is 96. The first number is 6 times the third number, and the third number is 40 less than the second number. What is the absolute value of the difference between the first and second numbers?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 16,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 60736,
+   "train_prompt": "A circle with integer radius $r$ is centered at $(r, r)$. Distinct line segments of length $c_i$ connect points $(0, a_i)$ to $(b_i, 0)$ for $1 \\le i \\le 14$ and are tangent to the circle, where $a_i$, $b_i$, and $c_i$ are all positive integers and $c_1 \\le c_2 \\le \\cdots \\le c_{14}$. What is the ratio $\\frac{c_{14}}{c_1}$ for the least possible value of $r$?\n\nPlease reason step by step, and put y"
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 17,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 40502,
+   "train_prompt": "The least common multiple of a positive integer \\(n\\) and 18 is 180, and the greatest common divisor of \\(n\\) and 45 is 15. What is the sum of the digits of \\(n\\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 19,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 94412,
+   "train_prompt": "A data set consists of 6 (not distinct) positive integers: 1, 7, 5, 2, 5, and \\(X\\). The average (arithmetic mean) of the 6 numbers equals a value in the data set. What is the sum of all possible values of \\(X\\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 24,
+   "frac_any": 0.516,
+   "frac_best_single": 0.516,
+   "best_pair": 14533,
+   "train_prompt": "Kayla rolls four fair 6-sided dice. What is the probability that at least one of the numbers Kayla rolls is greater than 4 and at least two of the numbers she rolls are greater than 2?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 26,
+   "frac_any": 0.609,
+   "frac_best_single": 0.609,
+   "best_pair": 259278,
+   "train_prompt": "The graph of \\( y = x^2 + 2x - 15 \\) intersects the \\( x \\)-axis at points \\( A \\) and \\( C \\) and the \\( y \\)-axis at point \\( B \\). What is \\( \\tan(\\angle ABC) \\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 27,
+   "frac_any": 0.566,
+   "frac_best_single": 0.566,
+   "best_pair": 25008,
+   "train_prompt": "How many $4 \\times 4$ arrays whose entries are $0$s and $1$s are there such that the row sums (the sum of the entries in each row) are $1,2,3,$ and $4,$ in some order, and the column sums (the sum of the entries in each column) are also $1,2,3,$ and $4,$ in some order?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 29,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 124111,
+   "train_prompt": "In $\\triangle{ABC}$, medians $\\overline{AD}$ and $\\overline{BE}$ intersect at $G$, and $\\triangle{AGE}$ is equilateral. Then $\\cos(C)$ can be written as $\\frac{m\\sqrt{p}}{n}$, where $m$ and $n$ are relatively prime positive integers and $p$ is a positive integer not divisible by the square of any prime. What is $m+n+p$?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 30,
+   "frac_any": 0.6,
+   "frac_best_single": 0.6,
+   "best_pair": 29280,
+   "train_prompt": "In rhombus \\(ABCD\\), point \\(P\\) lies on segment \\(\\overline{AD}\\) so that \\(\\overline{BP} \\perp \\overline{AD}\\), \\(AP = 3\\), and \\(PD = 2\\). What is the area of \\(ABCD\\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 31,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 57321,
+   "train_prompt": "Let \\( P(x) \\) be a polynomial with rational coefficients such that when \\( P(x) \\) is divided by the polynomial \\( x^2 + x + 1 \\), the remainder is \\( x + 2 \\), and when \\( P(x) \\) is divided by the polynomial \\( x^2 + 1 \\), the remainder is \\( 2x + 1 \\). There is a unique polynomial of least degree with these two properties. What is the sum of the squares of the coefficients of that polynomial?\n"
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 33,
+   "frac_any": 0.836,
+   "frac_best_single": 0.836,
+   "best_pair": 98819,
+   "train_prompt": "Ant Amelia starts on the number line at $0$ and crawls in the following manner. For $n=1,2,3,$ Amelia chooses a time duration $t_n$ and an increment $x_n$ independently and uniformly at random from the interval $(0,1).$ During the $n$th step of the process, Amelia moves $x_n$ units in the positive direction, using up $t_n$ minutes. If the total elapsed time has exceeded $1$ minute during the $n$th"
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 34,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 44121,
+   "train_prompt": "Let \\( x_0, x_1, x_2, \\cdots \\) be a sequence of numbers where each \\( x_k \\) is either 0 or 1. For each positive integer \\( n \\), define\n\\[ S_n = \\sum_{k=0}^{n-1} x_k 2^k. \\]\nSuppose \\( 7S_n \\equiv 1 \\pmod{2^n} \\) for all \\( n \\geq 1 \\). What is the value of the sum\n\\[ x_{2019} + 2x_{2020} + 4x_{2021} + 8x_{2022}? \\]\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 37,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 140646,
+   "train_prompt": "How many of the first ten numbers of the sequence \\(121, 11211, 1112111, \\ldots\\) are prime numbers?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 38,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 164856,
+   "train_prompt": "For how many values of the constant $k$ will the polynomial $x^2 + kx + 36$ have two distinct integer roots?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 42,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 225144,
+   "train_prompt": "The sequence \\(a_0, a_1, a_2, \\cdots\\) is a strictly increasing arithmetic sequence of positive integers such that\n\\[2^{a_7} = 2^{27} \\cdot a_7.\\]\nWhat is the minimum possible value of \\(a_2\\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 48,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 23812,
+   "train_prompt": "How many complex numbers satisfy the equation $z^{5}=\\overline{z}$, where $\\overline{z}$ is the conjugate of the complex number $z$?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 49,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 4505,
+   "train_prompt": "Consider the set of complex numbers \\( z \\) satisfying \\( |1 + z + z^2| = 4 \\). The maximum value of the imaginary part of \\( z \\) can be written in the form \\( \\frac{\\sqrt{m}}{n} \\), where \\( m \\) and \\( n \\) are relatively prime positive integers. What is \\( m + n \\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 52,
+   "frac_any": 0.803,
+   "frac_best_single": 0.676,
+   "best_pair": 172097,
+   "train_prompt": "The weight of $\\frac{1}{3}$ of a large pizza together with $3 \\frac{1}{2}$ cups of orange slices is the same as the weight of $\\frac{3}{4}$ of a large pizza together with $\\frac{1}{2}$ cup of orange slices. A cup of orange slices weighs $\\frac{1}{4}$ of a pound. What is the weight, in pounds, of a large pizza?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 55,
+   "frac_any": 0.765,
+   "frac_best_single": 0.765,
+   "best_pair": 63408,
+   "train_prompt": "Let \\( f \\) be the unique function defined on the positive integers such that \\[ \\sum_{d \\mid n} d \\cdot f\\left(\\frac{n}{d}\\right) = 1 \\] for all positive integers \\( n \\), where the sum is taken over all positive divisors of \\( n \\). What is \\( f(2023) \\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 56,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 16300,
+   "train_prompt": "How many ordered pairs of positive real numbers $(a,b)$ satisfy the equation\n\\[(1+2a)(2+2b)(2a+b) = 32ab?\\]\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 57,
+   "frac_any": 0.573,
+   "frac_best_single": 0.573,
+   "best_pair": 60071,
+   "train_prompt": "Let \\( K \\) be the number of sequences \\( A_1, A_2, \\dots, A_n \\) such that \\( n \\) is a positive integer less than or equal to 10, each \\( A_i \\) is a subset of \\( \\{1, 2, 3, \\dots, 10\\} \\), and \\( A_{i-1} \\) is a subset of \\( A_i \\) for each \\( i \\) between 2 and \\( n \\), inclusive. What is the remainder when \\( K \\) is divided by 10?\n\nPlease reason step by step, and put your final answer within"
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 59,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 174606,
+   "train_prompt": "How many positive perfect squares less than $2023$ are divisible by $5$?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 64,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 216626,
+   "train_prompt": "Maureen is keeping track of the mean of her quiz scores this semester. If Maureen scores an $11$ on the next quiz, her mean will increase by $1$. If she scores an $11$ on each of the next three quizzes, her mean will increase by $2$. What is the mean of her quiz scores currently?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 66,
+   "frac_any": 0.803,
+   "frac_best_single": 0.684,
+   "best_pair": 68721,
+   "train_prompt": "In the $xy$-plane, a circle of radius $4$ with center on the positive $x$-axis is tangent to the $y$-axis at the origin, and a circle with radius $10$ with center on the positive $y$-axis is tangent to the $x$-axis at the origin. What is the slope of the line passing through the two points at which these circles intersect?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 79,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 224638,
+   "train_prompt": "When the roots of the polynomial \\( P(x) = (x-1)^1 (x-2)^2 (x-3)^3 \\cdots (x-10)^{10} \\) are removed from the number line, what remains is the union of 11 disjoint open intervals. On how many of these intervals is \\( P(x) \\) positive?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 81,
+   "frac_any": 0.63,
+   "frac_best_single": 0.63,
+   "best_pair": 131692,
+   "train_prompt": "How many nonempty subsets \\( B \\) of \\( \\{0, 1, 2, 3, \\dots, 12\\} \\) have the property that the number of elements in \\( B \\) is equal to the least element of \\( B \\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 82,
+   "frac_any": 0.636,
+   "frac_best_single": 0.545,
+   "best_pair": 85784,
+   "train_prompt": "What is the area of the region in the coordinate plane defined by the inequality \\[\\left||x|-1\\right|+\\left||y|-1\\right|\\leq 1?\\]\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 15,
+   "frac_any": 0.5,
+   "frac_best_single": 0.5,
+   "best_pair": 3751,
+   "train_prompt": "Find the smallest positive integer $n$ such that $n!$ is divisible by $n^5 + n - 1$.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  }
+ ],
+ "all": [
+  {
+   "set": "aime_2022",
+   "idx": 0,
+   "frac_any": 0.455,
+   "frac_best_single": 0.455,
+   "best_pair": 235879
+  },
+  {
+   "set": "aime_2022",
+   "idx": 1,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 84701,
+   "train_prompt": "Three spheres with radii $11$, $13$, and $19$ are mutually externally tangent. A plane intersects the spheres in three congruent circles centered at $A$, $B$, and $C$, respectively, and the centers of the spheres all lie on the same side of this plane. Suppose that $AB^2 = 560$. Find $AC^2$.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 2,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 47919,
+   "train_prompt": "Let $ABCD$ be a parallelogram with $\\angle BAD < 90^\\circ.$ A circle tangent to sides $\\overline{DA},$  $\\overline{AB},$ and $\\overline{BC}$ intersects diagonal $\\overline{AC}$ at points $P$ and $Q$ with $AP < AQ,$ as shown. Suppose that $AP=3,$  $PQ=9,$ and $QC=16.$ Then the area of $ABCD$ can be expressed in the form $m\\sqrt{n},$ where $m$ and $n$ are positive integers, and $n$ is not divisible "
+  },
+  {
+   "set": "aime_2022",
+   "idx": 3,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 26784,
+   "train_prompt": "For any finite set $X$, let $| X |$ denote the number of elements in $X$. Define $$S_n = \\sum | A \\cap B |,$$ where the sum is taken over all ordered pairs $(A, B)$ such that $A$ and $B$ are subsets of $\\left\\{ 1, 2, 3,  \\cdots, n \\right\\}$ with $|A| = |B|$.\nFor example, $S_2 = 4$ because the sum is taken over the pairs of subsets $$(A, B) \\in \\left\\{ (\\emptyset, \\emptyset), ( \\{1\\}, \\{1\\} ), ( \\{"
+  },
+  {
+   "set": "aime_2022",
+   "idx": 4,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 8182,
+   "train_prompt": "Let $S$ be the set of all rational numbers that can be expressed as a repeating decimal in the form $0.\\overline{abcd},$ where at least one of the digits $a,$  $b,$  $c,$ or $d$ is nonzero. Let $N$ be the number of distinct numerators obtained when numbers in $S$ are written as fractions in lowest terms. For example, both $4$ and $410$ are counted among the distinct numerators for numbers in $S$ b"
+  },
+  {
+   "set": "aime_2022",
+   "idx": 5,
+   "frac_any": 0.015,
+   "frac_best_single": 0.015,
+   "best_pair": 60635
+  },
+  {
+   "set": "aime_2022",
+   "idx": 6,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 105515,
+   "train_prompt": "Let $x$, $y$, and $z$ be positive real numbers satisfying the system of equations\n\\begin{align*}\n\\sqrt{2x - xy} + \\sqrt{2y - xy} & = 1\\\\\n\\sqrt{2y - yz} + \\sqrt{2z - yz} & = \\sqrt{2}\\\\\n\\sqrt{2z - zx} + \\sqrt{2x - zx} & = \\sqrt{3}.\n\\end{align*}\nThen $\\big[ (1-x)(1-y)(1-z) \\big]^2$ can be written as $\\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.\n\nPlease reason st"
+  },
+  {
+   "set": "aime_2022",
+   "idx": 7,
+   "frac_any": 0.353,
+   "frac_best_single": 0.353,
+   "best_pair": 83479
+  },
+  {
+   "set": "aime_2022",
+   "idx": 8,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 25602,
+   "train_prompt": "In isosceles trapezoid $ABCD$, parallel bases $\\overline{AB}$ and $\\overline{CD}$ have lengths $500$ and $650$, respectively, and $AD=BC=333$. The angle bisectors of $\\angle{A}$ and $\\angle{D}$ meet at $P$, and the angle bisectors of $\\angle{B}$ and $\\angle{C}$ meet at $Q$. Find $PQ$.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 9,
+   "frac_any": 0.16,
+   "frac_best_single": 0.16,
+   "best_pair": 228377
+  },
+  {
+   "set": "aime_2022",
+   "idx": 10,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 87480,
+   "train_prompt": "A straight river that is $264$ meters wide flows from west to east at a rate of $14$ meters per minute. Melanie and Sherry sit on the south bank of the river with Melanie a distance of $D$ meters downstream from Sherry. Relative to the water, Melanie swims at $80$ meters per minute, and Sherry swims at $60$ meters per minute. At the same time, Melanie and Sherry begin swimming in straight lines to"
+  },
+  {
+   "set": "aime_2022",
+   "idx": 11,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2022",
+   "idx": 12,
+   "frac_any": 0.368,
+   "frac_best_single": 0.289,
+   "best_pair": 127357
+  },
+  {
+   "set": "aime_2022",
+   "idx": 13,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 110289,
+   "train_prompt": "Equilateral triangle $\\triangle ABC$ is inscribed in circle $\\omega$ with radius $18$. Circle $\\omega_A$ is tangent to sides $\\overline{AB}$ and $\\overline{AC}$ and is internally tangent to $\\omega$. Circles $\\omega_B$ and $\\omega_C$ are defined analogously. Circles $\\omega_A$, $\\omega_B$, and $\\omega_C$ meet in six points---two points for each pair of circles. The three intersection points closes"
+  },
+  {
+   "set": "aime_2022",
+   "idx": 14,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 80136,
+   "train_prompt": "Ellina has twelve blocks, two each of red ( $\\textbf{R}$ ), blue ( $\\textbf{B}$ ), yellow ( $\\textbf{Y}$ ), green ( $\\textbf{G}$ ), orange ( $\\textbf{O}$ ), and purple ( $\\textbf{P}$ ). Call an arrangement of blocks $\\textit{even}$ if there is an even number of blocks between each pair of blocks of the same color. For example, the arrangement $$\\textbf{R B B Y G G Y R O P P O}$$ is even. Ellina ar"
+  },
+  {
+   "set": "aime_2022",
+   "idx": 15,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 155069,
+   "train_prompt": "Adults made up $\\frac5{12}$ of the crowd of people at a concert. After a bus carrying $50$ more people arrived, adults made up $\\frac{11}{25}$ of the people at the concert. Find the minimum number of adults who could have been at the concert after the bus arrived.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 16,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 167067,
+   "train_prompt": "Find the remainder when $$\\binom{\\binom{3}{2}}{2} + \\binom{\\binom{4}{2}}{2} + \\dots + \\binom{\\binom{40}{2}}{2}$$ is divided by $1000$.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 17,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 60808,
+   "train_prompt": "Let $ABCD$ be a convex quadrilateral with $AB=2, AD=7,$ and $CD=3$ such that the bisectors of acute angles $\\angle{DAB}$ and $\\angle{ADC}$ intersect at the midpoint of $\\overline{BC}.$ Find the square of the area of $ABCD.$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 18,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2022",
+   "idx": 19,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 28322,
+   "train_prompt": "There is a polynomial $P(x)$ with integer coefficients such that $$P(x)=\\frac{(x^{2310}-1)^6}{(x^{105}-1)(x^{70}-1)(x^{42}-1)(x^{30}-1)}$$ holds for every $0<x<1.$ Find the coefficient of $x^{2022}$ in $P(x)$.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 20,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2022",
+   "idx": 21,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2022",
+   "idx": 22,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 196547,
+   "train_prompt": "Azar, Carl, Jon, and Sergey are the four players left in a singles tennis tournament. They are randomly assigned opponents in the semifinal matches, and the winners of those matches play each other in the final match to determine the winner of the tournament. When Azar plays Carl, Azar will win the match with probability $\\frac23$. When either Azar or Carl plays either Jon or Sergey, Azar or Carl "
+  },
+  {
+   "set": "aime_2022",
+   "idx": 23,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 30804,
+   "train_prompt": "A right square pyramid with volume $54$ has a base with side length $6.$ The five vertices of the pyramid all lie on a sphere with radius $\\frac mn$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 24,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 18984,
+   "train_prompt": "There is a positive real number \\( x \\) not equal to either \\( \\frac{1}{20} \\) or \\( \\frac{1}{2} \\) such that \n\\[ \\log_{20x} (22x) = \\log_{2x} (202x). \\]\nThe value \\( \\log_{20x} (22x) \\) can be written as \\( \\log_{10} \\left( \\frac{m}{n} \\right) \\), where \\( m \\) and \\( n \\) are relatively prime positive integers. Find \\( m+n \\).\n\nPlease reason step by step, and put your final answer within \\boxed{"
+  },
+  {
+   "set": "aime_2022",
+   "idx": 25,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 60965,
+   "train_prompt": "Twenty distinct points are marked on a circle and labeled $1$ through $20$ in clockwise order. A line segment is drawn between every pair of points whose labels differ by a prime number. Find the number of triangles formed whose vertices are among the original $20$ points.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 26,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 23898,
+   "train_prompt": "Let $x_1\\leq x_2\\leq \\cdots\\leq x_{100}$ be real numbers such that $|x_1| + |x_2| + \\cdots + |x_{100}| = 1$ and $x_1 + x_2 + \\cdots + x_{100} = 0$. Among all such $100$ -tuples of numbers, the greatest value that $x_{76} - x_{16}$ can achieve is $\\tfrac mn$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 27,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 32278,
+   "train_prompt": "A circle with radius $6$ is externally tangent to a circle with radius $24$. Find the area of the triangular region bounded by the three common tangent lines of these two circles.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2022",
+   "idx": 28,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2022",
+   "idx": 29,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2023",
+   "idx": 0,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 6412,
+   "train_prompt": "Five men and nine women stand equally spaced around a circle in random order. The probability that every man stands diametrically opposite a woman is $\\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m+n.$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 1,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2023",
+   "idx": 2,
+   "frac_any": 0.755,
+   "frac_best_single": 0.755,
+   "best_pair": 74151,
+   "train_prompt": "A plane contains $40$ lines, no $2$ of which are parallel. Suppose that there are $3$ points where exactly $3$ lines intersect, $4$ points where exactly $4$ lines intersect, $5$ points where exactly $5$ lines intersect, $6$ points where exactly $6$ lines intersect, and no points where more than $6$ lines intersect. Find the number of points where exactly $2$ lines intersect.\n\nPlease reason step by"
+  },
+  {
+   "set": "aime_2023",
+   "idx": 3,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 6989,
+   "train_prompt": "The sum of all positive integers $m$ for which $\\frac{13!}{m}$ is a perfect square can be written as $2^{a}3^{b}5^{c}7^{d}11^{e}13^{f}$, where $a, b, c, d, e,$ and $f$ are positive integers. Find $a+b+c+d+e+f$.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 4,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 5818,
+   "train_prompt": "Let \\( P \\) be a point on the circumcircle of square \\( ABCD \\) such that \\( PA \\cdot PC = 56 \\) and \\( PB \\cdot PD = 90 \\). What is the area of square \\( ABCD \\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 5,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 35991,
+   "train_prompt": "Alice knows that 3 red cards and 3 black cards will be revealed to her one at a time in random order. Before each card is revealed, Alice must guess its color. If Alice plays optimally, the expected number of cards she will guess correctly is $\\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m+n.$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 6,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2023",
+   "idx": 7,
+   "frac_any": 0.815,
+   "frac_best_single": 0.556,
+   "best_pair": 52781,
+   "train_prompt": "Rhombus $ABCD$ has $\\angle BAD < 90^\\circ.$ There is a point $P$ on the incircle of the rhombus such that the distances from $P$ to the lines $DA,AB,$ and $BC$ are $9,$  $5,$ and $16,$ respectively. Find the perimeter of $ABCD.$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 8,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 138896,
+   "train_prompt": "Find the number of cubic polynomials \\( p(x) = x^3 + ax^2 + bx + c \\), where \\( a \\), \\( b \\), and \\( c \\) are integers in \\(\\{-20, -19, -18, \\dots, 18, 19, 20\\}\\), such that there is a unique integer \\( m \\neq 2 \\) with \\( p(m) = p(2) \\).\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 9,
+   "frac_any": 0.135,
+   "frac_best_single": 0.108,
+   "best_pair": 89577
+  },
+  {
+   "set": "aime_2023",
+   "idx": 10,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 31044,
+   "train_prompt": "Find the number of subsets of $\\{1,2,3,\\ldots,10\\}$ that contain exactly one pair of consecutive integers. Examples of such subsets are $\\{\\mathbf{1},\\mathbf{2},5\\}$ and $\\{1,3,\\mathbf{6},\\mathbf{7},10\\}.$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 11,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 69415,
+   "train_prompt": "Let $\\triangle ABC$ be an equilateral triangle with side length $55$. Points $D$, $E$, and $F$ lie on sides $\\overline{BC}$, $\\overline{CA}$, and $\\overline{AB}$, respectively, with $BD=7$, $CE=30$, and $AF=40$. A unique point $P$ inside $\\triangle ABC$ has the property that \\[\\measuredangle AEP=\\measuredangle BFP=\\measuredangle CDP.\\] Find $\\tan^{2}\\left(\\measuredangle AEP\\right)$.\n\nPlease reason"
+  },
+  {
+   "set": "aime_2023",
+   "idx": 12,
+   "frac_any": 0.231,
+   "frac_best_single": 0.213,
+   "best_pair": 22299
+  },
+  {
+   "set": "aime_2023",
+   "idx": 13,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2023",
+   "idx": 14,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2023",
+   "idx": 15,
+   "frac_any": 0.964,
+   "frac_best_single": 0.964,
+   "best_pair": 237825,
+   "train_prompt": "The numbers of apples growing on each of six apple trees form an arithmetic sequence where the greatest number of apples growing on any of the six trees is double the least number of apples growing on any of the six trees. The total number of apples growing on all six trees is $990.$ Find the greatest number of apples growing on any of the six trees.\n\nPlease reason step by step, and put your final"
+  },
+  {
+   "set": "aime_2023",
+   "idx": 16,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 106245,
+   "train_prompt": "Recall that a palindrome is a number that reads the same forward and backward. Find the greatest integer less than $1000$ that is a palindrome both when written in base ten and when written in base eight, such as $292 = 444_{\\text{eight}}.$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 17,
+   "frac_any": 0.706,
+   "frac_best_single": 0.706,
+   "best_pair": 52200,
+   "train_prompt": "Let $\\triangle ABC$ be an isosceles triangle with $\\angle A = 90^\\circ.$ There exists a point $P$ inside $\\triangle ABC$ such that $\\angle PAB = \\angle PBC = \\angle PCA$ and $AP = 10.$ Find the area of $\\triangle ABC.$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 18,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 661,
+   "train_prompt": "Let $x,y,$ and $z$ be real numbers satisfying the system of equations \\begin{align*} xy + 4z &= 60 \\\\ yz + 4x &= 60 \\\\ zx + 4y &= 60. \\end{align*} Let $S$ be the set of possible values of $x.$ Find the sum of the squares of the elements of $S.$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 19,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 120202,
+   "train_prompt": "Let \\( S \\) be the set of all positive rational numbers \\( r \\) such that when the two numbers \\( r \\) and \\( 55r \\) are written as fractions in lowest terms, the sum of the numerator and denominator of one fraction is the same as the sum of the numerator and denominator of the other fraction. The sum of all the elements of \\( S \\) can be expressed in the form \\( \\frac{p}{q} \\), where \\( p \\) and "
+  },
+  {
+   "set": "aime_2023",
+   "idx": 20,
+   "frac_any": 0.1,
+   "frac_best_single": 0.075,
+   "best_pair": 1218
+  },
+  {
+   "set": "aime_2023",
+   "idx": 21,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 109474,
+   "train_prompt": "Each vertex of a regular dodecagon ( $12$ -gon) is to be colored either red or blue, and thus there are $2^{12}$ possible colorings. Find the number of these colorings with the property that no four vertices colored the same color are the four vertices of a rectangle.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 22,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 111800,
+   "train_prompt": "Let $\\omega=\\cos\\frac{2\\pi}{7}+i\\cdot\\sin\\frac{2\\pi}{7}$, where $i=\\sqrt{-1}$. Find\n$$\\prod_{k=0}^{6}(\\omega^{3k}+\\omega^k+1).$$\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "aime_2023",
+   "idx": 23,
+   "frac_any": 0.354,
+   "frac_best_single": 0.342,
+   "best_pair": 94655
+  },
+  {
+   "set": "aime_2023",
+   "idx": 24,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2023",
+   "idx": 25,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2023",
+   "idx": 26,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 20365,
+   "train_prompt": "In $\\triangle ABC$ with side lengths $AB=13$, $BC=14$, and $CA=15$, let $M$ be the midpoint of $\\overline{BC}$. Let $P$ be the point on the circumcircle of $\\triangle ABC$ such that $M$ is on $\\overline{AP}$. There exists a unique point $Q$ on segment $\\overline{AM}$ such that $\\angle PBQ = \\angle PCQ$. Then $AQ$ can be written as $\\frac{m}{\\sqrt{n}}$, where $m$ and $n$ are relatively prime positi"
+  },
+  {
+   "set": "aime_2023",
+   "idx": 27,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2023",
+   "idx": 28,
+   "frac_any": 0.008,
+   "frac_best_single": 0.008,
+   "best_pair": 80615
+  },
+  {
+   "set": "aime_2023",
+   "idx": 29,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_I",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_I",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_I",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_I",
+   "idx": null,
+   "frac_any": 0.041,
+   "frac_best_single": 0.041,
+   "best_pair": 2180
+  },
+  {
+   "set": "aime2024_I",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_I",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_I",
+   "idx": null,
+   "frac_any": 0.067,
+   "frac_best_single": 0.067,
+   "best_pair": 24061
+  },
+  {
+   "set": "aime2024_I",
+   "idx": null,
+   "frac_any": 0.067,
+   "frac_best_single": 0.058,
+   "best_pair": 135405
+  },
+  {
+   "set": "aime2024_I",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_I",
+   "idx": null,
+   "frac_any": 0.19,
+   "frac_best_single": 0.167,
+   "best_pair": 41602
+  },
+  {
+   "set": "aime2024_I",
+   "idx": null,
+   "frac_any": 0.087,
+   "frac_best_single": 0.087,
+   "best_pair": 6115
+  },
+  {
+   "set": "aime2024_I",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_I",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_I",
+   "idx": null,
+   "frac_any": 0.229,
+   "frac_best_single": 0.229,
+   "best_pair": 37115
+  },
+  {
+   "set": "aime2024_I",
+   "idx": null,
+   "frac_any": 0.146,
+   "frac_best_single": 0.146,
+   "best_pair": 62595
+  },
+  {
+   "set": "aime2024_II",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_II",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_II",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_II",
+   "idx": null,
+   "frac_any": 0.093,
+   "frac_best_single": 0.093,
+   "best_pair": 23009
+  },
+  {
+   "set": "aime2024_II",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_II",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_II",
+   "idx": null,
+   "frac_any": 0.086,
+   "frac_best_single": 0.086,
+   "best_pair": 7177
+  },
+  {
+   "set": "aime2024_II",
+   "idx": null,
+   "frac_any": 0.035,
+   "frac_best_single": 0.03,
+   "best_pair": 1768
+  },
+  {
+   "set": "aime2024_II",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_II",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_II",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_II",
+   "idx": null,
+   "frac_any": 0.039,
+   "frac_best_single": 0.039,
+   "best_pair": 88777
+  },
+  {
+   "set": "aime2024_II",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_II",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2024_II",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.026,
+   "frac_best_single": 0.026,
+   "best_pair": 8612
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.133,
+   "frac_best_single": 0.133,
+   "best_pair": 1768
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.233,
+   "frac_best_single": 0.233,
+   "best_pair": 127541
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.058,
+   "frac_best_single": 0.04,
+   "best_pair": 110942
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.262,
+   "frac_best_single": 0.262,
+   "best_pair": 110515
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.2,
+   "frac_best_single": 0.1,
+   "best_pair": 25655
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.429,
+   "frac_best_single": 0.357,
+   "best_pair": 67455
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.111,
+   "frac_best_single": 0.111,
+   "best_pair": 12700
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.013,
+   "frac_best_single": 0.013,
+   "best_pair": 2180
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.068,
+   "frac_best_single": 0.068,
+   "best_pair": 2180
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.018,
+   "frac_best_single": 0.018,
+   "best_pair": 41987
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.255,
+   "frac_best_single": 0.255,
+   "best_pair": 895
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime2025",
+   "idx": null,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 0,
+   "frac_any": 0.039,
+   "frac_best_single": 0.039,
+   "best_pair": 57319
+  },
+  {
+   "set": "aime_2026",
+   "idx": 1,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 2,
+   "frac_any": 0.014,
+   "frac_best_single": 0.014,
+   "best_pair": 212447
+  },
+  {
+   "set": "aime_2026",
+   "idx": 3,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 4,
+   "frac_any": 0.155,
+   "frac_best_single": 0.103,
+   "best_pair": 1768
+  },
+  {
+   "set": "aime_2026",
+   "idx": 5,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 6,
+   "frac_any": 0.111,
+   "frac_best_single": 0.111,
+   "best_pair": 64217
+  },
+  {
+   "set": "aime_2026",
+   "idx": 7,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 8,
+   "frac_any": 0.038,
+   "frac_best_single": 0.038,
+   "best_pair": 161198
+  },
+  {
+   "set": "aime_2026",
+   "idx": 9,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 10,
+   "frac_any": 0.025,
+   "frac_best_single": 0.025,
+   "best_pair": 31628
+  },
+  {
+   "set": "aime_2026",
+   "idx": 11,
+   "frac_any": 0.059,
+   "frac_best_single": 0.059,
+   "best_pair": 161198
+  },
+  {
+   "set": "aime_2026",
+   "idx": 12,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 13,
+   "frac_any": 0.3,
+   "frac_best_single": 0.3,
+   "best_pair": 97271
+  },
+  {
+   "set": "aime_2026",
+   "idx": 14,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 15,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 16,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 17,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 18,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 19,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 20,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 21,
+   "frac_any": 0.06,
+   "frac_best_single": 0.06,
+   "best_pair": 1768
+  },
+  {
+   "set": "aime_2026",
+   "idx": 22,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 23,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 24,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 25,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 26,
+   "frac_any": 0.088,
+   "frac_best_single": 0.088,
+   "best_pair": 1768
+  },
+  {
+   "set": "aime_2026",
+   "idx": 27,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 28,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "aime_2026",
+   "idx": 29,
+   "frac_any": 0.039,
+   "frac_best_single": 0.039,
+   "best_pair": 63232
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 0,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 1,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 2,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 166508,
+   "train_prompt": "What is the product of all real numbers $x$ such that the distance on the number line between $\\log_6x$ and $\\log_69$ is twice the distance on the number line between $\\log_610$ and $1$?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 3,
+   "frac_any": 0.059,
+   "frac_best_single": 0.059,
+   "best_pair": 9269
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 4,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 173414,
+   "train_prompt": "Let $\\mathcal{R}$ be the region in the complex plane consisting of all complex numbers $z$ that can be written as the sum of complex numbers $z_1$ and $z_2$, where $z_1$ lies on the segment with endpoints $3$ and $4i$, and $z_2$ has magnitude at most $1$. What integer is closest to the area of $\\mathcal{R}$?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 5,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 6,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 25199,
+   "train_prompt": "The roots of the polynomial \\(10x^3 - 39x^2 + 29x - 6\\) are the height, length, and width of a rectangular box (right rectangular prism). A new rectangular box is formed by lengthening each edge of the original box by 2 units. What is the volume of the new box?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 7,
+   "frac_any": 0.119,
+   "frac_best_single": 0.119,
+   "best_pair": 2179
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 8,
+   "frac_any": 0.711,
+   "frac_best_single": 0.711,
+   "best_pair": 123205,
+   "train_prompt": "Suppose \\( a \\) is a real number such that the equation\n\\[ a \\cdot (\\sin x + \\sin(2x)) = \\sin(3x) \\]\nhas more than one solution in the interval \\( (0, \\pi) \\). The set of all such \\( a \\) can be written in the form \\( (p, q) \\cup (q, r) \\), where \\( p \\), \\( q \\), and \\( r \\) are real numbers with \\( p < q < r \\). What is \\( p + q + r \\)?\n\nPlease reason step by step, and put your final answer with"
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 9,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 120025,
+   "train_prompt": "Let \\( T_k \\) be the transformation of the coordinate plane that first rotates the plane \\( k \\) degrees counterclockwise around the origin and then reflects the plane across the \\( y \\)-axis. What is the least positive integer \\( n \\) such that performing the sequence of transformations \\( T_1, T_2, T_3, \\dots, T_n \\) returns the point \\( (1,0) \\) back to itself?\n\nPlease reason step by step, and "
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 10,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 11,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 264652,
+   "train_prompt": "The sum of three numbers is 96. The first number is 6 times the third number, and the third number is 40 less than the second number. What is the absolute value of the difference between the first and second numbers?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 12,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 13,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 14,
+   "frac_any": 0.07,
+   "frac_best_single": 0.07,
+   "best_pair": 121066
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 15,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 16,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 60736,
+   "train_prompt": "A circle with integer radius $r$ is centered at $(r, r)$. Distinct line segments of length $c_i$ connect points $(0, a_i)$ to $(b_i, 0)$ for $1 \\le i \\le 14$ and are tangent to the circle, where $a_i$, $b_i$, and $c_i$ are all positive integers and $c_1 \\le c_2 \\le \\cdots \\le c_{14}$. What is the ratio $\\frac{c_{14}}{c_1}$ for the least possible value of $r$?\n\nPlease reason step by step, and put y"
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 17,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 40502,
+   "train_prompt": "The least common multiple of a positive integer \\(n\\) and 18 is 180, and the greatest common divisor of \\(n\\) and 45 is 15. What is the sum of the digits of \\(n\\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 18,
+   "frac_any": 0.325,
+   "frac_best_single": 0.325,
+   "best_pair": 93417
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 19,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 94412,
+   "train_prompt": "A data set consists of 6 (not distinct) positive integers: 1, 7, 5, 2, 5, and \\(X\\). The average (arithmetic mean) of the 6 numbers equals a value in the data set. What is the sum of all possible values of \\(X\\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 20,
+   "frac_any": 0.294,
+   "frac_best_single": 0.294,
+   "best_pair": 211788
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 21,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 22,
+   "frac_any": 0.556,
+   "frac_best_single": 0.278,
+   "best_pair": 126346
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 23,
+   "frac_any": 0.231,
+   "frac_best_single": 0.231,
+   "best_pair": 55000
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 24,
+   "frac_any": 0.516,
+   "frac_best_single": 0.516,
+   "best_pair": 14533,
+   "train_prompt": "Kayla rolls four fair 6-sided dice. What is the probability that at least one of the numbers Kayla rolls is greater than 4 and at least two of the numbers she rolls are greater than 2?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 25,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 26,
+   "frac_any": 0.609,
+   "frac_best_single": 0.609,
+   "best_pair": 259278,
+   "train_prompt": "The graph of \\( y = x^2 + 2x - 15 \\) intersects the \\( x \\)-axis at points \\( A \\) and \\( C \\) and the \\( y \\)-axis at point \\( B \\). What is \\( \\tan(\\angle ABC) \\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 27,
+   "frac_any": 0.566,
+   "frac_best_single": 0.566,
+   "best_pair": 25008,
+   "train_prompt": "How many $4 \\times 4$ arrays whose entries are $0$s and $1$s are there such that the row sums (the sum of the entries in each row) are $1,2,3,$ and $4,$ in some order, and the column sums (the sum of the entries in each column) are also $1,2,3,$ and $4,$ in some order?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 28,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 29,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 124111,
+   "train_prompt": "In $\\triangle{ABC}$, medians $\\overline{AD}$ and $\\overline{BE}$ intersect at $G$, and $\\triangle{AGE}$ is equilateral. Then $\\cos(C)$ can be written as $\\frac{m\\sqrt{p}}{n}$, where $m$ and $n$ are relatively prime positive integers and $p$ is a positive integer not divisible by the square of any prime. What is $m+n+p$?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 30,
+   "frac_any": 0.6,
+   "frac_best_single": 0.6,
+   "best_pair": 29280,
+   "train_prompt": "In rhombus \\(ABCD\\), point \\(P\\) lies on segment \\(\\overline{AD}\\) so that \\(\\overline{BP} \\perp \\overline{AD}\\), \\(AP = 3\\), and \\(PD = 2\\). What is the area of \\(ABCD\\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 31,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 57321,
+   "train_prompt": "Let \\( P(x) \\) be a polynomial with rational coefficients such that when \\( P(x) \\) is divided by the polynomial \\( x^2 + x + 1 \\), the remainder is \\( x + 2 \\), and when \\( P(x) \\) is divided by the polynomial \\( x^2 + 1 \\), the remainder is \\( 2x + 1 \\). There is a unique polynomial of least degree with these two properties. What is the sum of the squares of the coefficients of that polynomial?\n"
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 32,
+   "frac_any": 0.286,
+   "frac_best_single": 0.286,
+   "best_pair": 2124
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 33,
+   "frac_any": 0.836,
+   "frac_best_single": 0.836,
+   "best_pair": 98819,
+   "train_prompt": "Ant Amelia starts on the number line at $0$ and crawls in the following manner. For $n=1,2,3,$ Amelia chooses a time duration $t_n$ and an increment $x_n$ independently and uniformly at random from the interval $(0,1).$ During the $n$th step of the process, Amelia moves $x_n$ units in the positive direction, using up $t_n$ minutes. If the total elapsed time has exceeded $1$ minute during the $n$th"
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 34,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 44121,
+   "train_prompt": "Let \\( x_0, x_1, x_2, \\cdots \\) be a sequence of numbers where each \\( x_k \\) is either 0 or 1. For each positive integer \\( n \\), define\n\\[ S_n = \\sum_{k=0}^{n-1} x_k 2^k. \\]\nSuppose \\( 7S_n \\equiv 1 \\pmod{2^n} \\) for all \\( n \\geq 1 \\). What is the value of the sum\n\\[ x_{2019} + 2x_{2020} + 4x_{2021} + 8x_{2022}? \\]\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 35,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 36,
+   "frac_any": 0.018,
+   "frac_best_single": 0.018,
+   "best_pair": 65261
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 37,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 140646,
+   "train_prompt": "How many of the first ten numbers of the sequence \\(121, 11211, 1112111, \\ldots\\) are prime numbers?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 38,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 164856,
+   "train_prompt": "For how many values of the constant $k$ will the polynomial $x^2 + kx + 36$ have two distinct integer roots?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 39,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 40,
+   "frac_any": 0.154,
+   "frac_best_single": 0.154,
+   "best_pair": 43829
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 41,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 42,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 225144,
+   "train_prompt": "The sequence \\(a_0, a_1, a_2, \\cdots\\) is a strictly increasing arithmetic sequence of positive integers such that\n\\[2^{a_7} = 2^{27} \\cdot a_7.\\]\nWhat is the minimum possible value of \\(a_2\\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 43,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 44,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 45,
+   "frac_any": 0.455,
+   "frac_best_single": 0.455,
+   "best_pair": 10048
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 46,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 47,
+   "frac_any": 0.212,
+   "frac_best_single": 0.212,
+   "best_pair": 144734
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 48,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 23812,
+   "train_prompt": "How many complex numbers satisfy the equation $z^{5}=\\overline{z}$, where $\\overline{z}$ is the conjugate of the complex number $z$?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 49,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 4505,
+   "train_prompt": "Consider the set of complex numbers \\( z \\) satisfying \\( |1 + z + z^2| = 4 \\). The maximum value of the imaginary part of \\( z \\) can be written in the form \\( \\frac{\\sqrt{m}}{n} \\), where \\( m \\) and \\( n \\) are relatively prime positive integers. What is \\( m + n \\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 50,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 51,
+   "frac_any": 0.111,
+   "frac_best_single": 0.111,
+   "best_pair": 56736
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 52,
+   "frac_any": 0.803,
+   "frac_best_single": 0.676,
+   "best_pair": 172097,
+   "train_prompt": "The weight of $\\frac{1}{3}$ of a large pizza together with $3 \\frac{1}{2}$ cups of orange slices is the same as the weight of $\\frac{3}{4}$ of a large pizza together with $\\frac{1}{2}$ cup of orange slices. A cup of orange slices weighs $\\frac{1}{4}$ of a pound. What is the weight, in pounds, of a large pizza?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 53,
+   "frac_any": 0.338,
+   "frac_best_single": 0.338,
+   "best_pair": 48919
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 54,
+   "frac_any": 0.08,
+   "frac_best_single": 0.08,
+   "best_pair": 4326
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 55,
+   "frac_any": 0.765,
+   "frac_best_single": 0.765,
+   "best_pair": 63408,
+   "train_prompt": "Let \\( f \\) be the unique function defined on the positive integers such that \\[ \\sum_{d \\mid n} d \\cdot f\\left(\\frac{n}{d}\\right) = 1 \\] for all positive integers \\( n \\), where the sum is taken over all positive divisors of \\( n \\). What is \\( f(2023) \\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 56,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 16300,
+   "train_prompt": "How many ordered pairs of positive real numbers $(a,b)$ satisfy the equation\n\\[(1+2a)(2+2b)(2a+b) = 32ab?\\]\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 57,
+   "frac_any": 0.573,
+   "frac_best_single": 0.573,
+   "best_pair": 60071,
+   "train_prompt": "Let \\( K \\) be the number of sequences \\( A_1, A_2, \\dots, A_n \\) such that \\( n \\) is a positive integer less than or equal to 10, each \\( A_i \\) is a subset of \\( \\{1, 2, 3, \\dots, 10\\} \\), and \\( A_{i-1} \\) is a subset of \\( A_i \\) for each \\( i \\) between 2 and \\( n \\), inclusive. What is the remainder when \\( K \\) is divided by 10?\n\nPlease reason step by step, and put your final answer within"
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 58,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 59,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 174606,
+   "train_prompt": "How many positive perfect squares less than $2023$ are divisible by $5$?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 60,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 61,
+   "frac_any": 0.2,
+   "frac_best_single": 0.2,
+   "best_pair": 4326
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 62,
+   "frac_any": 0.205,
+   "frac_best_single": 0.205,
+   "best_pair": 4326
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 63,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 64,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 216626,
+   "train_prompt": "Maureen is keeping track of the mean of her quiz scores this semester. If Maureen scores an $11$ on the next quiz, her mean will increase by $1$. If she scores an $11$ on each of the next three quizzes, her mean will increase by $2$. What is the mean of her quiz scores currently?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 65,
+   "frac_any": 0.114,
+   "frac_best_single": 0.114,
+   "best_pair": 4326
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 66,
+   "frac_any": 0.803,
+   "frac_best_single": 0.684,
+   "best_pair": 68721,
+   "train_prompt": "In the $xy$-plane, a circle of radius $4$ with center on the positive $x$-axis is tangent to the $y$-axis at the origin, and a circle with radius $10$ with center on the positive $y$-axis is tangent to the $x$-axis at the origin. What is the slope of the line passing through the two points at which these circles intersect?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 67,
+   "frac_any": 0.216,
+   "frac_best_single": 0.216,
+   "best_pair": 4326
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 68,
+   "frac_any": 0.308,
+   "frac_best_single": 0.308,
+   "best_pair": 132446
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 69,
+   "frac_any": 0.435,
+   "frac_best_single": 0.304,
+   "best_pair": 221860
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 70,
+   "frac_any": 0.062,
+   "frac_best_single": 0.062,
+   "best_pair": 161745
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 71,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 72,
+   "frac_any": 0.047,
+   "frac_best_single": 0.047,
+   "best_pair": 2497
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 73,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 74,
+   "frac_any": 0.118,
+   "frac_best_single": 0.118,
+   "best_pair": 27456
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 75,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 76,
+   "frac_any": 0.22,
+   "frac_best_single": 0.18,
+   "best_pair": 4326
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 77,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 78,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 79,
+   "frac_any": 1.0,
+   "frac_best_single": 1.0,
+   "best_pair": 224638,
+   "train_prompt": "When the roots of the polynomial \\( P(x) = (x-1)^1 (x-2)^2 (x-3)^3 \\cdots (x-10)^{10} \\) are removed from the number line, what remains is the union of 11 disjoint open intervals. On how many of these intervals is \\( P(x) \\) positive?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 80,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 81,
+   "frac_any": 0.63,
+   "frac_best_single": 0.63,
+   "best_pair": 131692,
+   "train_prompt": "How many nonempty subsets \\( B \\) of \\( \\{0, 1, 2, 3, \\dots, 12\\} \\) have the property that the number of elements in \\( B \\) is equal to the least element of \\( B \\)?\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "amc_2022_2023",
+   "idx": 82,
+   "frac_any": 0.636,
+   "frac_best_single": 0.545,
+   "best_pair": 85784,
+   "train_prompt": "What is the area of the region in the coordinate plane defined by the inequality \\[\\left||x|-1\\right|+\\left||y|-1\\right|\\leq 1?\\]\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 0,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 1,
+   "frac_any": 0.111,
+   "frac_best_single": 0.111,
+   "best_pair": 68660
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 2,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 3,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 4,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 5,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 6,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 7,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 8,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 9,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 10,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 11,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 12,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 13,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 14,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 15,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 16,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 17,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 18,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 19,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 20,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 21,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 22,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 23,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 24,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 25,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 26,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 27,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 28,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2023",
+   "idx": 29,
+   "frac_any": 0.02,
+   "frac_best_single": 0.02,
+   "best_pair": 45415
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 1,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 2,
+   "frac_any": 0.015,
+   "frac_best_single": 0.015,
+   "best_pair": 175392
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 3,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 4,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 5,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 6,
+   "frac_any": 0.188,
+   "frac_best_single": 0.188,
+   "best_pair": 201444
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 7,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 8,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 9,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 10,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 11,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 12,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 13,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 14,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 15,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 16,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 17,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 18,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 19,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 20,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 21,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 22,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 23,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 24,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 25,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 26,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 27,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 28,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 29,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2024",
+   "idx": 30,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 1,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 2,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 3,
+   "frac_any": 0.059,
+   "frac_best_single": 0.029,
+   "best_pair": 58063
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 4,
+   "frac_any": 0.231,
+   "frac_best_single": 0.154,
+   "best_pair": 31173
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 5,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 6,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 7,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 8,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 9,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 10,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 11,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 12,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 13,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 14,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 15,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 16,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 17,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 18,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 19,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 20,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 21,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 22,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 23,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 24,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 25,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 26,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 27,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 28,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 29,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "hmmt_feb_2025",
+   "idx": 30,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 0,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 1,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 2,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 3,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 4,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 5,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 6,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 7,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 8,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 9,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 10,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 11,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 12,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 13,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 14,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 15,
+   "frac_any": 0.5,
+   "frac_best_single": 0.5,
+   "best_pair": 3751,
+   "train_prompt": "Find the smallest positive integer $n$ such that $n!$ is divisible by $n^5 + n - 1$.\n\nPlease reason step by step, and put your final answer within \\boxed{}."
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 16,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 17,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 18,
+   "frac_any": 0.267,
+   "frac_best_single": 0.133,
+   "best_pair": 9895
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 19,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 20,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 21,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 22,
+   "frac_any": 0.056,
+   "frac_best_single": 0.056,
+   "best_pair": 126081
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 23,
+   "frac_any": 0.059,
+   "frac_best_single": 0.059,
+   "best_pair": 31075
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 24,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 25,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 26,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 27,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 28,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "brumo_2025",
+   "idx": 29,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 0,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 1,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 2,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 3,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 4,
+   "frac_any": 0.062,
+   "frac_best_single": 0.062,
+   "best_pair": 169659
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 5,
+   "frac_any": 0.158,
+   "frac_best_single": 0.158,
+   "best_pair": 132454
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 6,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 7,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 8,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 9,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 10,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 11,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 12,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 13,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 14,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 15,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 16,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 17,
+   "frac_any": 0.056,
+   "frac_best_single": 0.056,
+   "best_pair": 70627
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 18,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 19,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 20,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 21,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 22,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 23,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 24,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 25,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 26,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 27,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 28,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 29,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 30,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 31,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 32,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 33,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 34,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 35,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 36,
+   "frac_any": 0.02,
+   "frac_best_single": 0.02,
+   "best_pair": 33667
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 37,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 38,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "cmimc_2025",
+   "idx": 39,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 0,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 1,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 2,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 3,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 4,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 5,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 6,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 7,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 8,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 9,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 10,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 11,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 12,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 13,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 14,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 15,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 16,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 17,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 18,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 19,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 20,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 21,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 22,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 23,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 24,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 25,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 26,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 27,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 28,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 29,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 30,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 31,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 32,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 33,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 34,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 35,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 36,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 37,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 38,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 39,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 40,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 41,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 42,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 43,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 44,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 45,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 46,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 47,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 48,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 49,
+   "frac_any": 0.086,
+   "frac_best_single": 0.086,
+   "best_pair": 12360
+  },
+  {
+   "set": "smt_2025",
+   "idx": 50,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 51,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  },
+  {
+   "set": "smt_2025",
+   "idx": 52,
+   "frac_any": 0.0,
+   "frac_best_single": 0.0,
+   "best_pair": -1
+  }
+ ]
+}

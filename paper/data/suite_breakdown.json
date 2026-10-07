@@ -1,0 +1,393 @@
+{
+ "_doc": "Per-competition breakdown of the 446-problem suite and paired gaps on subsets (arXiv appendix, eval-set construction).\nReads the merged 32K vLLM evaluations (same loader and grader as collect_32k.py: avg@8, semantic full-text grader) and the\ntraining-overlap check (results/contamination_math_sft_400k.json), writes data/suite_breakdown.json.",
+ "arms": [
+  "vanilla",
+  "vpl",
+  "uniform128",
+  "gist",
+  "lt_thought",
+  "rkv_b4096"
+ ],
+ "overlap_threshold": 0.5,
+ "sets": [
+  {
+   "name": "AIME 2022",
+   "source": "AI-MO/aimo-validation-aime (url 2022)",
+   "era": "pre_2025",
+   "n": 30,
+   "overlap": 19,
+   "avg8": {
+    "vanilla": 42.1,
+    "vpl": 41.7,
+    "uniform128": 42.1,
+    "gist": 33.8,
+    "lt_thought": 25.8,
+    "rkv_b4096": 40.4
+   },
+   "gen_vanilla": 14159
+  },
+  {
+   "name": "AIME 2023",
+   "source": "MathArena/aime_2023_I+II",
+   "era": "pre_2025",
+   "n": 30,
+   "overlap": 17,
+   "avg8": {
+    "vanilla": 40.0,
+    "vpl": 40.4,
+    "uniform128": 35.8,
+    "gist": 31.7,
+    "lt_thought": 21.7,
+    "rkv_b4096": 36.2
+   },
+   "gen_vanilla": 14291
+  },
+  {
+   "name": "AIME 2024",
+   "source": "MathArena/aime_2024_I+II",
+   "era": "pre_2025",
+   "n": 30,
+   "overlap": 0,
+   "avg8": {
+    "vanilla": 50.8,
+    "vpl": 50.0,
+    "uniform128": 42.9,
+    "gist": 34.2,
+    "lt_thought": 36.7,
+    "rkv_b4096": 52.9
+   },
+   "gen_vanilla": 13674
+  },
+  {
+   "name": "AIME 2025",
+   "source": "MathArena/aime_2025",
+   "era": "post_cutoff",
+   "n": 30,
+   "overlap": 0,
+   "avg8": {
+    "vanilla": 37.1,
+    "vpl": 33.8,
+    "uniform128": 34.2,
+    "gist": 27.5,
+    "lt_thought": 25.0,
+    "rkv_b4096": 30.8
+   },
+   "gen_vanilla": 14695
+  },
+  {
+   "name": "AIME 2026",
+   "source": "MathArena/aime_2026",
+   "era": "post_cutoff",
+   "n": 30,
+   "overlap": 0,
+   "avg8": {
+    "vanilla": 36.2,
+    "vpl": 38.3,
+    "uniform128": 37.1,
+    "gist": 24.2,
+    "lt_thought": 29.2,
+    "rkv_b4096": 33.8
+   },
+   "gen_vanilla": 13902
+  },
+  {
+   "name": "AMC 12 2022--2023",
+   "source": "AI-MO/aimo-validation-amc",
+   "era": "pre_2025",
+   "n": 83,
+   "overlap": 32,
+   "avg8": {
+    "vanilla": 75.6,
+    "vpl": 75.2,
+    "uniform128": 73.2,
+    "gist": 67.5,
+    "lt_thought": 66.1,
+    "rkv_b4096": 76.7
+   },
+   "gen_vanilla": 8501
+  },
+  {
+   "name": "HMMT Feb 2023",
+   "source": "MathArena/hmmt_feb_2023",
+   "era": "pre_2025",
+   "n": 30,
+   "overlap": 0,
+   "avg8": {
+    "vanilla": 32.5,
+    "vpl": 32.1,
+    "uniform128": 29.2,
+    "gist": 22.9,
+    "lt_thought": 25.4,
+    "rkv_b4096": 32.9
+   },
+   "gen_vanilla": 14628
+  },
+  {
+   "name": "HMMT Feb 2024",
+   "source": "MathArena/hmmt_feb_2024",
+   "era": "pre_2025",
+   "n": 30,
+   "overlap": 0,
+   "avg8": {
+    "vanilla": 27.1,
+    "vpl": 24.6,
+    "uniform128": 21.7,
+    "gist": 20.4,
+    "lt_thought": 18.8,
+    "rkv_b4096": 26.2
+   },
+   "gen_vanilla": 14658
+  },
+  {
+   "name": "HMMT Feb 2025",
+   "source": "MathArena/hmmt_feb_2025",
+   "era": "post_cutoff",
+   "n": 30,
+   "overlap": 0,
+   "avg8": {
+    "vanilla": 22.5,
+    "vpl": 22.9,
+    "uniform128": 24.6,
+    "gist": 15.4,
+    "lt_thought": 16.2,
+    "rkv_b4096": 22.1
+   },
+   "gen_vanilla": 15437
+  },
+  {
+   "name": "BRUMO 2025",
+   "source": "MathArena/brumo_2025",
+   "era": "post_cutoff",
+   "n": 30,
+   "overlap": 1,
+   "avg8": {
+    "vanilla": 50.4,
+    "vpl": 45.0,
+    "uniform128": 44.2,
+    "gist": 41.7,
+    "lt_thought": 36.7,
+    "rkv_b4096": 44.2
+   },
+   "gen_vanilla": 12141
+  },
+  {
+   "name": "CMIMC 2025",
+   "source": "MathArena/cmimc_2025",
+   "era": "post_cutoff",
+   "n": 40,
+   "overlap": 0,
+   "avg8": {
+    "vanilla": 19.1,
+    "vpl": 21.6,
+    "uniform128": 20.9,
+    "gist": 16.2,
+    "lt_thought": 13.8,
+    "rkv_b4096": 18.8
+   },
+   "gen_vanilla": 16125
+  },
+  {
+   "name": "SMT 2025",
+   "source": "MathArena/smt_2025",
+   "era": "post_cutoff",
+   "n": 53,
+   "overlap": 0,
+   "avg8": {
+    "vanilla": 44.1,
+    "vpl": 42.2,
+    "uniform128": 42.2,
+    "gist": 36.8,
+    "lt_thought": 32.8,
+    "rkv_b4096": 43.4
+   },
+   "gen_vanilla": 13059
+  }
+ ],
+ "subsets": [
+  {
+   "name": "All 446 problems",
+   "n": 446,
+   "vanilla": 43.8,
+   "gap": {
+    "vpl": [
+     -0.8,
+     -2.3,
+     0.8
+    ],
+    "uniform128": [
+     -2.3,
+     -3.8,
+     -0.9
+    ],
+    "gist": [
+     -8.5,
+     -10.3,
+     -6.8
+    ],
+    "lt_thought": [
+     -10.5,
+     -12.5,
+     -8.7
+    ],
+    "rkv_b4096": [
+     -1.2,
+     -2.7,
+     0.3
+    ],
+    "vpl_minus_uniform": [
+     1.6,
+     0.1,
+     3.0
+    ]
+   }
+  },
+  {
+   "name": "No overlap with the SFT data",
+   "n": 377,
+   "vanilla": 39.2,
+   "gap": {
+    "vpl": [
+     -0.8,
+     -2.4,
+     0.9
+    ],
+    "uniform128": [
+     -1.9,
+     -3.5,
+     -0.3
+    ],
+    "gist": [
+     -7.8,
+     -9.6,
+     -5.9
+    ],
+    "lt_thought": [
+     -9.2,
+     -11.3,
+     -7.2
+    ],
+    "rkv_b4096": [
+     -1.0,
+     -2.6,
+     0.6
+    ],
+    "vpl_minus_uniform": [
+     1.1,
+     -0.4,
+     2.8
+    ]
+   }
+  },
+  {
+   "name": "Released 2025 or later",
+   "n": 213,
+   "vanilla": 35.2,
+   "gap": {
+    "vpl": [
+     -0.9,
+     -3.3,
+     1.3
+    ],
+    "uniform128": [
+     -1.0,
+     -3.2,
+     1.1
+    ],
+    "gist": [
+     -7.6,
+     -10.2,
+     -5.2
+    ],
+    "lt_thought": [
+     -9.3,
+     -12.3,
+     -6.6
+    ],
+    "rkv_b4096": [
+     -2.4,
+     -4.8,
+     -0.3
+    ],
+    "vpl_minus_uniform": [
+     0.1,
+     -1.9,
+     2.3
+    ]
+   }
+  },
+  {
+   "name": "Released before 2025",
+   "n": 233,
+   "vanilla": 51.7,
+   "gap": {
+    "vpl": [
+     -0.6,
+     -2.7,
+     1.3
+    ],
+    "uniform128": [
+     -3.5,
+     -5.5,
+     -1.5
+    ],
+    "gist": [
+     -9.3,
+     -11.7,
+     -6.9
+    ],
+    "lt_thought": [
+     -11.6,
+     -14.2,
+     -8.9
+    ],
+    "rkv_b4096": [
+     -0.1,
+     -2.1,
+     2.0
+    ],
+    "vpl_minus_uniform": [
+     2.9,
+     0.9,
+     5.0
+    ]
+   }
+  },
+  {
+   "name": "Overlapping problems only",
+   "n": 69,
+   "vanilla": 69.2,
+   "gap": {
+    "vpl": [
+     -0.7,
+     -4.5,
+     2.9
+    ],
+    "uniform128": [
+     -4.7,
+     -8.2,
+     -1.3
+    ],
+    "gist": [
+     -12.5,
+     -17.2,
+     -7.8
+    ],
+    "lt_thought": [
+     -18.1,
+     -23.6,
+     -13.0
+    ],
+    "rkv_b4096": [
+     -2.5,
+     -6.7,
+     1.4
+    ],
+    "vpl_minus_uniform": [
+     4.0,
+     0.5,
+     7.4
+    ]
+   }
+  }
+ ]
+}

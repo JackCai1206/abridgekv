@@ -1,0 +1,472 @@
+--- a/vllm/v1/core/compresslm/processor.py
++++ b/vllm/v1/core/compresslm/processor.py
+@@ -256,6 +256,106 @@
+ 
+         return visible, False
+ 
++    # ------------------------------------------------------------------------------------------------------
++    # Async scheduling (ABRIDGEKV_ASYNC). Block structure is count-based, so everything except sampled token
++    # VALUES is decided when a step is scheduled; values arrive one step later through update_after_step_async.
++    # Supported only without replay tails / retained tails / tail exclusion / packed KV / selective history.
++    # ------------------------------------------------------------------------------------------------------
++    ASYNC_DUMMY_TOKEN = 0
++
++    def check_async_supported(self) -> None:
++        c = self.config
++        bad = [name for name, v in (
++            ("replay_tail", c.replay_tail), ("raw_tail", c.raw_tail), ("retain_tail_kv", c.retain_tail_kv),
++            ("code_excluded_tail", c.code_excluded_tail), ("packed KV", c.uses_packed_kv),
++            ("selective history", c.uses_selective_history)) if v]
++        if bad:
++            raise ValueError(f"CompressLM async scheduling does not support: {', '.join(bad)}")
++
++    def run_pending_finish(self, request: "Request", mask_span: MaskSpan, pack_code_span: PackCodeSpan | None) -> None:
++        """Finish every block whose last code step was scheduled earlier (schedule-time half of update_after_step)."""
++        state = request.compresslm_state
++        if state is None or not state.pending_finish:
++            return
++        for block_id in state.pending_finish:
++            block = state.blocks[block_id]
++            replay_end = block.code_span[1]
++            if (replay_end >= request.num_tokens and state.pending_prompt_index >= len(state.original_prompt_token_ids)
++                    and state.held_sampled_token is None):
++                # The continuation token is still on the GPU (only possible if the code step was scheduled in the
++                # very next step AND the engine ran ahead): leave it queued, the next schedule() retries.
++                if any(kind == "held" for kind, _ in state.pending_samples):
++                    return
++                raise RuntimeError("CompressLM async: block completed without a continuation token")
++            self._finish_block(request, state, block, mask_span, pack_code_span)
++        state.pending_finish.clear()
++
++    def after_schedule_async(self, request: "Request", start: int, num_scheduled: int, samples: bool,
++                             max_model_len: int) -> None:
++        """Advance the state machine for a step that was just scheduled over [start, start + num_scheduled)."""
++        state = request.compresslm_state
++        if state is None:
++            return
++        end = start + num_scheduled
++        role = state.roles[start]
++        block = state.blocks[state.position_to_block[start]]
++        if role == CONTENT:
++            complete = (len(block.content_positions) == self.config.block_size
++                        and end == block.content_positions[-1] + 1)
++            if complete and block.code_span is None:
++                internal = self.config.num_code_tokens + self.config.replay_tail
++                if end + internal >= max_model_len:
++                    state.cap_pending = True          # finish at this step's output, as the sync path does
++                    if samples:
++                        state.pending_samples.append(("cap", -1))
++                    return
++                self._stage_codes(request, state, block)
++                if samples:
++                    state.pending_samples.append(("held", -1))
++            elif samples:
++                if end != request.num_tokens:
++                    raise RuntimeError("CompressLM async: a sampling step must end at the last known token")
++                self._append_content(request, state, [self.ASYNC_DUMMY_TOKEN], is_prompt=False)
++                state.unfilled.add(end)
++                state.pending_samples.append(("fill", end))
++        elif role == CODE:
++            role_end = end == request.num_tokens or state.roles[end] != CODE
++            if role_end:
++                state.pending_finish.append(block.block_id)
++        else:
++            raise RuntimeError("CompressLM async: replay steps are not supported")
++
++    def update_after_step_async(self, request: "Request", sampled_token_ids: list[int],
++                                max_model_len: int) -> tuple[list[int], bool]:
++        """Consume one step's sampled token (value only; the structure was advanced at schedule time)."""
++        state = request.compresslm_state
++        if state is None or not sampled_token_ids:
++            return [], False
++        if len(sampled_token_ids) > 1:
++            raise RuntimeError("CompressLM decoding is incompatible with speculative multi-token output")
++        if not state.pending_samples:
++            raise RuntimeError("CompressLM async: sampled token with no pending slot")
++        sampled = sampled_token_ids[0]
++        kind, pos = state.pending_samples.pop(0)
++        if kind == "fill":
++            request._all_token_ids[pos] = sampled
++            request._output_token_ids[pos - request.num_prompt_tokens] = sampled
++            blk = state.blocks[state.position_to_block[pos]]
++            k = len(blk.content_positions) - 1
++            while blk.content_positions[k] != pos:
++                k -= 1
++            blk.content_token_ids[k] = sampled
++            state.unfilled.discard(pos)
++        elif kind == "held":
++            state.held_sampled_token = sampled
++        state.visible_output_token_ids.append(sampled)
++        if self._check_stop(request, state, sampled, max_model_len):
++            return [sampled], True
++        if kind == "cap":
++            request.status = RequestStatus.FINISHED_LENGTH_CAPPED
++            return [sampled], True
++        return [sampled], False
++
+     def reset_for_preemption(self, state: CompressLMState) -> None:
+         state.reset_compaction_progress()
+ 
+--- a/vllm/v1/core/compresslm/state.py
++++ b/vllm/v1/core/compresslm/state.py
+@@ -39,6 +39,16 @@
+     expired_sticky_retained_block_ids: set[int] = field(default_factory=set)
+     compacted_block_ids: set[int] = field(default_factory=set)
+     worker_token_ids_dirty: bool = False
++    # Async scheduling (ABRIDGEKV_ASYNC): the state machine advances at SCHEDULE time; only sampled token VALUES
++    # arrive later. pending_samples holds, in step order, where each in-flight sample goes: ("fill", pos) for a
++    # content position reserved with a dummy id, ("held", -1) for a block's continuation token (held across its
++    # codes). unfilled = reserved positions whose value is still on the GPU. pending_finish = blocks whose final
++    # code step is scheduled; _finish_block runs at the start of the next schedule() (before any later step reads
++    # this request's KV), so its compaction ops ship with that step and run on the stream after the code step.
++    pending_samples: list = field(default_factory=list)
++    unfilled: set = field(default_factory=set)
++    pending_finish: list = field(default_factory=list)
++    cap_pending: bool = False
+ 
+     @property
+     def current_block(self) -> CompressLMBlock:
+@@ -49,3 +59,4 @@
+         self.expired_retained_tail_positions.clear()
+         self.expired_sticky_retained_block_ids.clear()
+         self.compacted_block_ids.clear()
++        self.pending_finish.clear()   # the KV is gone; re-prefill re-runs the code step and re-queues it
+--- a/vllm/v1/core/sched/async_scheduler.py
++++ b/vllm/v1/core/sched/async_scheduler.py
+@@ -19,6 +19,8 @@
+         spec_decode_tokens = scheduler_output.scheduled_spec_decode_tokens
+         for req_id in scheduler_output.num_scheduled_tokens:
+             request = self.requests[req_id]
++            if request.compresslm_state is not None:
++                continue    # ABRIDGEKV_ASYNC: CompressLM reserves its own slots (processor.after_schedule_async)
+             pending_structured_output_tokens |= (
+                 request.use_structured_output and request.num_output_placeholders > 0
+             )
+--- a/vllm/v1/core/sched/output.py
++++ b/vllm/v1/core/sched/output.py
+@@ -250,6 +250,10 @@
+     # and the tail-exclusive range in each group's layout.
+     compresslm_group_code_spans: dict[str, list[list[tuple[int, int]]]] | None = None
+     compresslm_group_code_excluded_ranges: dict[str, list[tuple[int, int]]] | None = None
++    # ABRIDGEKV_ASYNC: requests whose first scheduled input is the previous step's sample (still on the GPU), and
++    # the token ids of every scheduled span (known tokens; a reserved slot carries a dummy the scatter overwrites).
++    compresslm_async_scatter_req_ids: set[str] | None = None
++    compresslm_span_token_ids: dict[str, list[int]] | None = None
+ 
+     @classmethod
+     def make_empty(cls) -> "SchedulerOutput":
+--- a/vllm/v1/core/sched/scheduler.py
++++ b/vllm/v1/core/sched/scheduler.py
+@@ -103,6 +103,7 @@
+                            self.block_masking_config.keep_last_n_blocks)
+         self.compresslm_config = getattr(vllm_config, "compresslm_config", None)
+         self.compresslm_processor: CompressLMProcessor | None = None
++        self.compresslm_async = False
+         if self.compresslm_config is not None and self.compresslm_config.enable:
+             if self.block_masking_processor is not None:
+                 raise ValueError(
+@@ -116,11 +117,11 @@
+                 raise ValueError(
+                     "CompressLM decoding does not support pipeline parallelism"
+                 )
+-            if self.scheduler_config.async_scheduling:
+-                raise ValueError(
+-                    "CompressLM decoding requires async_scheduling=False"
+-                )
+             self.compresslm_processor = CompressLMProcessor(self.compresslm_config)
++            if self.scheduler_config.async_scheduling:
++                # ABRIDGEKV_ASYNC: the state machine advances at schedule time (see processor.after_schedule_async).
++                self.compresslm_processor.check_async_supported()
++                self.compresslm_async = True
+             if self.compresslm_config.uses_physical_layer_quotas:
+                 # One KV cache group per code quota (worker: CodeQuotaFullAttentionSpec); the
+                 # processor drops slots >= quota from each group's own layout at compaction.
+@@ -312,6 +313,15 @@
+         encoder_compute_budget = self.max_num_encoder_input_tokens
+         # Spec decode-related.
+         scheduled_spec_decode_tokens: dict[str, list[int]] = {}
++        if self.compresslm_async:
++            # Blocks whose last code step was scheduled earlier: compact them and append the continuation now, so
++            # the compaction ops ship with THIS step (run on the stream after the code step) and nothing later of
++            # the request is scheduled against the uncompacted layout.
++            for _r in self.running:
++                if _r.compresslm_state is not None and _r.compresslm_state.pending_finish:
++                    self.compresslm_processor.run_pending_finish(
++                        _r, self.mask_token_span,
++                        self.pack_compresslm_code_span if self.compresslm_config.uses_packed_kv else None)
+         compresslm_code_step = (
+             self.compresslm_processor is not None
+             and any(
+@@ -616,6 +626,17 @@
+                         skipped_waiting_requests.prepend_request(request)
+                         continue
+ 
++                # ABRIDGEKV_ASYNC: a preempted request whose last sample is still on the GPU cannot be re-prefilled
++                # yet (its logical token list has a reserved slot without a value).
++                if (
++                    self.compresslm_async
++                    and request.compresslm_state is not None
++                    and (request.compresslm_state.unfilled or request.compresslm_state.pending_samples)
++                ):
++                    self.waiting.pop_request()
++                    skipped_waiting_requests.prepend_request(request)
++                    continue
++
+                 # Check that adding the request still respects the max_loras
+                 # constraint.
+                 if (
+@@ -1034,6 +1055,21 @@
+                 )
+                 if spans:
+                     compresslm_code_spans[req_id] = spans
++        compresslm_async_scatter_req_ids = None
++        compresslm_span_token_ids = None
++        if self.compresslm_async:
++            # Inputs: every scheduled span's token ids go to the worker explicitly (known codes, continuations and
++            # prompt chunks never come from the previous sample); only a span that starts at a reserved slot whose
++            # value is still on the GPU takes it from the previous step's sample (vLLM's async scatter).
++            compresslm_async_scatter_req_ids = set()
++            compresslm_span_token_ids = {}
++            for _rid, _n in num_scheduled_tokens.items():
++                _r = self.requests[_rid]
++                _st = _r.compresslm_state
++                _s0 = _r.num_computed_tokens
++                if _st is not None and _s0 in _st.unfilled:
++                    compresslm_async_scatter_req_ids.add(_rid)
++                compresslm_span_token_ids[_rid] = list(_r.all_token_ids[_s0 : _s0 + _n])
+         scheduler_output = SchedulerOutput(
+             scheduled_new_reqs=new_reqs_data,
+             scheduled_cached_reqs=cached_reqs_data,
+@@ -1058,6 +1094,8 @@
+             compresslm_code_spans=compresslm_code_spans,
+             compresslm_group_code_spans=compresslm_group_code_spans,
+             compresslm_group_code_excluded_ranges=compresslm_group_code_excluded_ranges,
++            compresslm_async_scatter_req_ids=compresslm_async_scatter_req_ids,
++            compresslm_span_token_ids=compresslm_span_token_ids,
+         )
+ 
+         # NOTE(Kuntai): this function is designed for multiple purposes:
+@@ -1155,9 +1193,18 @@
+         # 3. If some tokens (e.g. spec tokens) are rejected later, the number of
+         #    computed tokens will be adjusted in update_from_output.
+         num_scheduled_tokens = scheduler_output.num_scheduled_tokens
++        _skip = scheduler_output.skip_sampling_req_ids or ()
+         for req_id, num_scheduled_token in num_scheduled_tokens.items():
+             request = self.requests[req_id]
+             request.num_computed_tokens += num_scheduled_token
++            if self.compresslm_async and request.compresslm_state is not None:
++                self.compresslm_processor.after_schedule_async(
++                    request,
++                    request.num_computed_tokens - num_scheduled_token,
++                    num_scheduled_token,
++                    req_id not in _skip,
++                    self.max_model_len,
++                )
+ 
+             # NOTE: _free_encoder_inputs relies on num_computed_tokens, which
+             # may be updated again in _update_from_output for speculative
+@@ -1516,6 +1563,10 @@
+                 and request.compresslm_state is not None
+             ):
+                 new_token_ids, stopped = (
++                    self.compresslm_processor.update_after_step_async(
++                        request, new_token_ids, self.max_model_len
++                    )
++                    if self.compresslm_async else
+                     self.compresslm_processor.update_after_step(
+                         request=request,
+                         num_scheduled_tokens=num_tokens_scheduled,
+--- a/vllm/v1/sample/ops/bad_words.py
++++ b/vllm/v1/sample/ops/bad_words.py
+@@ -17,6 +17,7 @@
+ 
+ # id(list) -> (list, singleton token-id tensor or None, multi-token words)
+ _SPLIT_CACHE: dict[int, tuple[list[list[int]], torch.Tensor | None, list[list[int]]]] = {}
++_CANON: dict[tuple, torch.Tensor] = {}
+ 
+ 
+ def _split_bad_words(
+@@ -30,11 +31,15 @@
+             return singles, multi
+     single_ids = [w[0] for w in bad_words_token_ids if len(w) == 1]
+     multi = [w for w in bad_words_token_ids if len(w) != 1]
+-    singles = (
+-        torch.tensor(single_ids, dtype=torch.long, device=device)
+-        if single_ids
+-        else None
+-    )
++    singles = None
++    if single_ids:   # ABRIDGEKV_NOSYNC_BADWORDS: one shared tensor per distinct ban set, copied without a stream sync
++        ckey = (tuple(single_ids), str(device))
++        singles = _CANON.get(ckey)
++        if singles is None:
++            host = torch.tensor(single_ids, dtype=torch.long)
++            if torch.device(device).type == "cuda":
++                host = host.pin_memory()
++            singles = _CANON[ckey] = host.to(device, non_blocking=True)
+     if len(_SPLIT_CACHE) > 4096:
+         _SPLIT_CACHE.clear()
+     _SPLIT_CACHE[key] = (bad_words_token_ids, singles, multi)
+@@ -68,15 +73,29 @@
+ ) -> None:
+     rows: list[torch.Tensor] = []
+     cols: list[torch.Tensor] = []
++    split = {}
+     for i, bad_words_ids in bad_words_token_ids.items():
+-        singles, multi = _split_bad_words(bad_words_ids, logits.device)
++        singles, multi = split[i] = _split_bad_words(bad_words_ids, logits.device)
++        if multi:
++            _apply_bad_words_single_batch(logits[i], multi, past_tokens_ids[i])
++    shared = {id(v[0]) for v in split.values()}
++    if len(split) == logits.shape[0] and len(shared) == 1 and next(iter(split.values()))[0] is not None:
++        # every row bans the same single tokens (CompressLM: the code tokens): one column fill, no per-row work
++        logits.index_fill_(1, next(iter(split.values()))[0], _SMALLEST_LOGIT)
++        return
++    for i, (singles, _) in split.items():
+         if singles is not None:
+             rows.append(torch.full_like(singles, i))
+             cols.append(singles)
+-        if multi:
+-            _apply_bad_words_single_batch(logits[i], multi, past_tokens_ids[i])
+     if rows:
+-        logits[torch.cat(rows), torch.cat(cols)] = _SMALLEST_LOGIT
++        # ABRIDGEKV_NOSYNC_BADWORDS: index_fill_ takes the value as a kernel scalar. `logits[r, c] = -inf` turned the
++        # Python float into a CPU tensor copied host->device from pageable memory, which synchronizes the stream: the
++        # sampler then waited for the whole forward every step, and async scheduling could overlap nothing.
++        r, c = torch.cat(rows), torch.cat(cols)
++        if logits.is_contiguous():
++            logits.view(-1).index_fill_(0, r * logits.shape[-1] + c, _SMALLEST_LOGIT)
++        else:
++            logits.index_put_((r, c), torch.full((), _SMALLEST_LOGIT, dtype=logits.dtype, device=logits.device))
+ 
+ 
+ def apply_bad_words_with_drafts(
+--- a/vllm/v1/worker/compresslm_masks.py
++++ b/vllm/v1/worker/compresslm_masks.py
+@@ -162,6 +162,13 @@
+     return int(value) if value.isdigit() else None
+ 
+ 
++def _upload(rows: list[list[int]], device: torch.device) -> torch.Tensor:
++    host = torch.tensor(rows, dtype=torch.long)
++    if torch.device(device).type == "cuda":
++        host = host.pin_memory()
++    return host.to(device, non_blocking=True)
++
++
+ def build_layer_quota_masks(
+     requests: list[tuple[int, int, list[tuple[int, int]], tuple[int, int] | None]],
+     quotas: list[int],
+@@ -204,8 +211,8 @@
+         if excluded is not None:
+             ex_start[r], ex_end[r] = excluded
+     if bool((ex_end > ex_start).any()):
+-        ex_start = ex_start.to(device)[row_req][:, None]
+-        ex_end = ex_end.to(device)[row_req][:, None]
++        ex_start = ex_start.to(device, non_blocking=True)[row_req][:, None]
++        ex_end = ex_end.to(device, non_blocking=True)[row_req][:, None]
+         allowed &= ~((col[None, :] >= ex_start) & (col[None, :] < ex_end))
+     out: dict[int, torch.Tensor] = {}
+     for q in quotas:
+@@ -226,11 +233,9 @@
+                     vals += [1, -1]
+         if rows_idx:
+             diff = torch.zeros((num_reqs, max_seq + 1), dtype=torch.int32, device=device)
+-            diff.index_put_(
+-                (torch.tensor(rows_idx, device=device), torch.tensor(cols_idx, device=device)),
+-                torch.tensor(vals, dtype=torch.int32, device=device),
+-                accumulate=True,
+-            )
++            # ABRIDGEKV_NOSYNC: one pinned non-blocking upload (torch.tensor(..., device=cuda) synchronizes the stream)
++            idx = _upload([rows_idx, cols_idx, vals], device)
++            diff.index_put_((idx[0], idx[1]), idx[2].to(torch.int32), accumulate=True)
+             hidden = diff.cumsum(1)[:, :max_seq] > 0  # (num_reqs, max_seq)
+             mask = allowed & ~hidden[row_req]
+         else:
+--- a/vllm/v1/worker/gpu_input_batch.py
++++ b/vllm/v1/worker/gpu_input_batch.py
+@@ -81,6 +81,20 @@
+         return -1
+ 
+ 
++_HISTORY_CACHE: dict[int, tuple[list[list[int]], bool]] = {}
++
++
++def _bans_need_history(words: list[list[int]]) -> bool:
++    hit = _HISTORY_CACHE.get(id(words))
++    if hit is not None and hit[0] is words:
++        return hit[1]
++    need = any(len(w) != 1 for w in words)
++    if len(_HISTORY_CACHE) > 4096:
++        _HISTORY_CACHE.clear()
++    _HISTORY_CACHE[id(words)] = (words, need)
++    return need
++
++
+ class InputBatch:
+     def __init__(
+         self,
+@@ -820,9 +834,11 @@
+ 
+         # Only set output_token_ids if required by the current requests'
+         # sampling parameters.
++        # ABRIDGEKV_NOSYNC_BADWORDS: single-token bans (CompressLM's code tokens) never read the history; requiring
++        # output_token_ids for them made async scheduling wait for the previous step's sampled ids before sampling.
+         needs_output_token_ids = (
+             not self.no_penalties
+-            or bool(self.bad_words_token_ids)
++            or any(_bans_need_history(w) for w in self.bad_words_token_ids.values())
+             or self.logitsprocs_need_output_token_ids
+         )
+         output_token_ids = (
+--- a/vllm/v1/worker/gpu_model_runner.py
++++ b/vllm/v1/worker/gpu_model_runner.py
+@@ -1124,6 +1124,20 @@
+         self.input_batch.condense()
+         # Allow attention backend to reorder the batch, potentially
+         self._may_reorder_batch(scheduler_output)
++        # ABRIDGEKV_ASYNC: write every scheduled span's token ids (known codes, continuations, prompt chunks; a
++        # reserved slot carries a dummy that the async scatter overwrites from the previous sample).
++        span_tokens = getattr(scheduler_output, "compresslm_span_token_ids", None)
++        if span_tokens:
++            for req_id, toks in span_tokens.items():
++                idx = self.input_batch.req_id_to_index.get(req_id)
++                if idx is None or not toks:
++                    continue
++                start = int(self.input_batch.num_computed_tokens_cpu[idx])
++                end = start + len(toks)
++                self.input_batch.token_ids_cpu[idx, start:end] = toks
++                if end > self.input_batch.num_tokens_no_spec[idx]:
++                    self.input_batch.num_tokens_no_spec[idx] = end
++                    self.input_batch.num_tokens[idx] = end
+         # Refresh batch metadata with any pending updates.
+         self.input_batch.refresh_metadata()
+         if self.compresslm_packed_sidecar is not None:
+@@ -1196,10 +1210,10 @@
+         all_ops: list[tuple[int, int, int, int]],
+         layer_caches: list[torch.Tensor] | None = None,
+     ) -> None:
+-        op_tensor = torch.tensor(
+-            all_ops,
+-            dtype=torch.long,
+-            device=self.device,
++        # ABRIDGEKV_NOSYNC: a blocking host->device copy ends in a stream synchronize, which stalled async scheduling
++        # on every compaction; upload from pinned memory without blocking instead.
++        op_tensor = torch.tensor(all_ops, dtype=torch.long, pin_memory=self.pin_memory).to(
++            self.device, non_blocking=True
+         )
+         (
+             src_block_ids,
+@@ -1379,7 +1393,12 @@
+         total_num_spec_tokens = 0
+         scheduled_spec_tokens = scheduler_output.scheduled_spec_decode_tokens
+ 
++        # ABRIDGEKV_ASYNC: only spans that start at a reserved slot take the previous sample (a code step after a
++        # block's last content step must NOT: that sample is the block's held continuation token).
++        scatter_only = getattr(scheduler_output, "compresslm_async_scatter_req_ids", None)
+         for req_id, cur_index in self.input_batch.req_id_to_index.items():
++            if scatter_only is not None and req_id not in scatter_only:
++                continue
+             if (prev_index := prev_req_id_to_index.get(req_id)) is not None:
+                 prev_common_req_indices.append(prev_index)
+                 # We need to compute the flattened input_ids index of the
