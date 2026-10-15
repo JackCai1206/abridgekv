@@ -7,7 +7,7 @@ Nothing large is stored in the repository. `bash launch/prep_data.sh` rebuilds e
 `scripts/prep_math_sft.py` draws 400,000 prompt/response pairs from `nvidia/OpenMathReasoning` (split `cot`),
 keeps responses with a boxed answer that end in EOS, tokenizes them with the Qwen3-4B-Base tokenizer, and buckets
 them by total length between 512 and 16,384 tokens (60% up to 4K, 25% up to 8K, 15% up to 16K), holding out 64
-sequences per band for held-out cross-entropy. The result (about 1.93B response tokens, 5.2 GB) is written to
+sequences per band for held-out cross-entropy. The result (about 1.93B response tokens) is written to
 `$POOL`, by default `outputs/data/math_sft_long_qwen3_400000.pkl`. Training reads it in a fixed order that does not
 depend on the number of GPUs (`DATA_STREAM=canonical:8x1x32` in `launch/train.sh`).
 
