@@ -3,6 +3,7 @@
 # top-k 20, seed 1234, 31,744 new tokens (the 32K cap). One GPU; each set is written to $OUT/<set>.json.
 #   MODEL=<hf dir> ARM=perlayer|uniform|vanilla|rkv TAG=<name> bash launch/eval_suite.sh
 #   R-KV: ARM=rkv MODEL=<vanilla hf dir> RKV_BUDGET=4096, run inside R-KV's own vLLM port (github.com/Zefan-Cai/R-KV).
+#   Quick check: SETS=aime2025 NUM_PROBLEMS=2 NUM_GEN=1 (defaults reproduce the paper: every problem, 8 samples, 31,744 tokens).
 # Then: python3 scripts/summarize_suite.py --root $OUTPUT_DIR/eval --out <json> --md <md>
 set -euo pipefail
 source "$(dirname "$0")/env.sh"; cd "$REPO"
@@ -23,6 +24,6 @@ for SET in $SETS; do
   OUT=$OUTPUT_DIR/eval/${SET}_qwen3_4b_vllm_${TAG}_merged; mkdir -p "$OUT"
   [ -s "$OUT/$EVAL_ARM.json" ] && { echo "[suite] $SET done"; continue; }
   python3 scripts/eval_math500_compresslm.py --model-dir "$MODEL" --data data/math_eval/$SET.jsonl --output "$OUT/$EVAL_ARM.json" \
-    --num-generations 8 --max-tokens 31744 --max-model-len $MML --max-num-seqs ${MAX_NUM_SEQS:-32} \
+    --num-generations ${NUM_GEN:-8} --max-tokens ${MAX_TOKENS:-31744} ${NUM_PROBLEMS:+--num-problems $NUM_PROBLEMS} --max-model-len $MML --max-num-seqs ${MAX_NUM_SEQS:-32} \
     --temperature 0.6 --top-p 0.95 --top-k 20 --seed 1234 --attention-backend FLASH_ATTN "${EXTRA[@]}"
 done
