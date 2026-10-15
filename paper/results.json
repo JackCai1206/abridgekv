@@ -135,7 +135,7 @@
    "schedule": "uniform",
    "hmmt25": null,
    "hmmt24": null,
-   "note": "same checkpoint, second sampling seed on AIME only (job 2181): eval-to-eval sampling variance of avg@8 is about 2 points pooled over 60 problems (34.0 -> 31.7); MATH-500 is greedy and unchanged"
+   "note": "same checkpoint, second sampling seed on AIME only: eval-to-eval sampling variance of avg@8 is about 2 points pooled over 60 problems (34.0 -> 31.7); MATH-500 is greedy and unchanged"
   },
   {
    "key": "hetero_proxy",
@@ -365,7 +365,7 @@
   "multi_boundary": {
    "setting": "per-layer headline, physical cache groups; 510-token prompt, 1,200 teacher-forced tokens (two block boundaries)",
    "result": "top-1 agreement 0.995, mean $|\\Delta\\log p|$ 0.006",
-   "src": "serve_plain_check 14247186 (2026-09-21)"
+   "src": "serve_plain_check (2026-09-21)"
   }
  },
  "old_layout_reference": {
@@ -467,7 +467,7 @@
    "status": "done",
    "tag": "base_sameset32k",
    "math500": 69.6,
-   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (della gputest 14261380)",
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap",
    "math500_greedy_prev": 71.0
   },
   {
@@ -495,11 +495,11 @@
     14695,
     15437
    ],
-   "src": "vanilla_sameset32k (14200869_0 + 14214351)",
+   "src": "vanilla_sameset32k",
    "tag": "vanilla_sameset32k",
    "short": "vanilla",
    "math500": 88.1,
-   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (della gputest 14268570)",
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap",
    "math500_greedy_prev": 87.4
   },
   {
@@ -531,7 +531,7 @@
    "tag": "c256tpl_tail16_kd_sameset32k",
    "short": "per-layer+tail+KD",
    "math500": 87.8,
-   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (della gputest 14268437)",
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap",
    "math500_greedy_prev": 83.0
   },
   {
@@ -563,7 +563,7 @@
    "tag": "c256uni_u128_sameset32k",
    "short": "uniform 128",
    "math500": 88.3,
-   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (della gputest 14260489)",
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap",
    "math500_greedy_prev": 85.8
   },
   {
@@ -591,11 +591,11 @@
     14776,
     15479
    ],
-   "src": "c256tpl_sameset32k (14195185_0 + 14214349)",
+   "src": "c256tpl_sameset32k",
    "tag": "c256tpl_sameset32k",
    "short": "\\method{} (per-layer)",
    "math500": 87.5,
-   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (della gputest 14262716)",
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap",
    "math500_greedy_prev": 84.8
   },
   {
@@ -623,12 +623,12 @@
     15103,
     15814
    ],
-   "src": "c256uni_tail16_sameset32k (14195191_0 + 14214355)",
+   "src": "c256uni_tail16_sameset32k",
    "ce_src": "docs/HANDOVER_tail16_2026-09-19.md (collaborator run, step 936, 1,285,970 held-out tokens)",
    "tag": "c256uni_tail16_sameset32k",
    "short": "tail 16",
    "math500": 87.3,
-   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (della gputest 14266167)",
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap",
    "math500_greedy_prev": 86.2
   },
   {
@@ -646,10 +646,9 @@
    "short": "KD",
    "math500": 86.7,
    "run": "compressed_K256_xblk_kd1.0t1.0_qwen3_4b_quota128_c512_xblk_bitrev_kd_uniform",
-   "note": "TigerAI job 2164; checkpoint arrived on della 2026-09-21 in the _from_tigerai mirror and is symlinked into sft_ddp",
-   "heldout_ce_src": "heldout_position_ce.jsonl step 936 phase=final, 192 held-out pairs (TigerAI job 2164)",
-   "status_note": "suite complete (final merge 14268821); MATH-500 avg@4 shards 2-3 on gputest 14268822",
-   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (della gputest 14270339)"
+   "heldout_ce_src": "heldout_position_ce.jsonl step 936 phase=final, 192 held-out pairs",
+   "status_note": "suite complete",
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap"
   },
   {
    "key": "evict_recency",
@@ -680,7 +679,7 @@
    "evict": "recency",
    "short": "recency",
    "math500": null,
-   "pool_note": "aime2025 + hmmt_feb_2025 only (60 problems), 8 single-sample seeds, HF eviction at 32K; array 14193621 complete 2026-09-22"
+   "pool_note": "aime2025 + hmmt_feb_2025 only (60 problems), 8 single-sample seeds, HF eviction at 32K"
   },
   {
    "key": "evict_random",
@@ -696,7 +695,7 @@
    "evict": "random",
    "short": "random",
    "math500": null,
-   "pool_note": "aime2025 + hmmt_feb_2025 only (60 problems), 8 single-sample seeds, HF eviction at 32K; array 14193621 complete 2026-09-22"
+   "pool_note": "aime2025 + hmmt_feb_2025 only (60 problems), 8 single-sample seeds, HF eviction at 32K"
   },
   {
    "key": "evict_score",
@@ -712,7 +711,7 @@
    "evict": "score",
    "short": "score",
    "math500": null,
-   "pool_note": "aime2025 + hmmt_feb_2025 only (60 problems), 8 single-sample seeds, HF eviction at 32K; array 14193621 complete 2026-09-22"
+   "pool_note": "aime2025 + hmmt_feb_2025 only (60 problems), 8 single-sample seeds, HF eviction at 32K"
   },
   {
    "key": "rkv_b2048",
@@ -726,7 +725,7 @@
    "math500": 83.9,
    "pool_note": "R-KV ported to vLLM 0.25.1; constant budget of 2048 KV rows, buffer 64, same vanilla SFT checkpoint, same 446 problems, avg@8 at 32K, same grader. Mean resident generated KV 2045 rows against 1789 for our 8:1 arm on the same generations, so this row is generous to R-KV. VALID RUN 2026-09-23: cap 1379 MiB from the 1.5x-length formula, 13/13 sets merged, ZERO RKV-SKIP lines.",
    "heldout_ce_na": true,
-   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap; R-KV budget 2048 on the vanilla checkpoint, in-node on reservation 14314936, 0 RKV-SKIP lines (2026-09-25)"
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap; R-KV budget 2048 on the vanilla checkpoint, 0 RKV-SKIP lines (2026-09-25)"
   },
   {
    "key": "rkv_b4096",
@@ -740,7 +739,7 @@
    "math500": 86.5,
    "pool_note": "R-KV ported to vLLM 0.25.1; constant budget of 4096 KV rows for the whole sequence, buffer 64, on the same vanilla SFT checkpoint, the same 446 problems, avg@8 at 32K, same grader. Mean resident generated KV 3996 rows against 3578 for our 4:1 arm on the same generations, so this row is generous to R-KV. VALID RUN 2026-09-23: cap 5348 MiB from the 1.5x-length formula, 13/13 sets merged, ZERO RKV-SKIP lines.",
    "heldout_ce_na": true,
-   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap; R-KV budget 4096 on the vanilla checkpoint, in-node on reservation 14324060, 0 RKV-SKIP lines (2026-09-25)"
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap; R-KV budget 4096 on the vanilla checkpoint, 0 RKV-SKIP lines (2026-09-25)"
   },
   {
    "key": "gist",
@@ -757,7 +756,7 @@
    "short": "appended positions",
    "math500": 85.8,
    "math500_greedy_prev": null,
-   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (della gputest 14263462)"
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap"
   },
   {
    "key": "vph",
@@ -774,9 +773,9 @@
    "tag": "c256vph_sameset32k",
    "math500": null,
    "math500_src": null,
-   "src": "TigerAI run 2034 mirrored to della, packed serving",
+   "src": "packed serving",
    "math500_greedy_prev": 84.2,
-   "status_note": "paused 2026-09-21 until the packed sidecar matches the other serving paths; greedy MATH-500 was 84.2 (TigerAI 2035)"
+   "status_note": "paused 2026-09-21 until the packed sidecar matches the other serving paths; greedy MATH-500 was 84.2"
   },
   {
    "key": "tph512",
@@ -800,7 +799,7 @@
    "status": "done",
    "tag": "tpl512_sameset32k",
    "math500": 87.85,
-   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K (gpu-short array 14365044)"
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K"
   },
   {
    "key": "lt_thought",
@@ -814,7 +813,7 @@
    "math500": 83.4,
    "tag": "lt_thought",
    "kv_note": "9 cache rows + the continue token stay per thought (10 rows); its generations end a thought every 53.0 tokens on average (completion bench cap-128 cell, 146032 compactions over 7.74M generated tokens, 0 preemptions, 2026-09-26) -> 512/53.0*10 = 97 rows per 512, 5.3:1",
-   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (reservation shards, 2026-09-26)",
+   "math500_src": "avg@4, T=0.6, strict last-boxed, 16K cap (2026-09-26)",
    "thought_tokens": 53.0,
    "rows_per_thought": 10
   },
@@ -829,7 +828,7 @@
    "status": "done",
    "tag": "lt64k9_sameset32k",
    "math500": 83.1,
-   "math500_src": "avg@4, T=0.6, strict, 16K (gpu-short 14365825)",
+   "math500_src": "avg@4, T=0.6, strict, 16K",
    "held_note": "user 2026-09-25: approximation held out of the paper for now"
   }
  ],
@@ -852,7 +851,7 @@
    "status": "done",
    "heldout_ce": 0.4281,
    "math500": null,
-   "suite_src": "446-problem suite avg@8, 32K cap (della gputest 14271288/14271289/14275013)"
+   "suite_src": "446-problem suite avg@8, 32K cap"
   },
   {
    "C": 512,
@@ -863,7 +862,7 @@
    "status": "done",
    "heldout_ce": 0.4184,
    "math500": null,
-   "suite_src": "446-problem suite avg@8, 32K cap; trained to step 936, eval on reservation 14247743 2026-09-23"
+   "suite_src": "446-problem suite avg@8, 32K cap; trained to step 936, eval 2026-09-23"
   },
   {
    "C": 256,
@@ -874,7 +873,7 @@
    "status": "done",
    "heldout_ce": 0.4246,
    "math500": null,
-   "suite_src": "446-problem suite avg@8, 32K cap; trained to step 948, eval in-node on reservation 14250939 2026-09-23"
+   "suite_src": "446-problem suite avg@8, 32K cap; trained to step 948, eval 2026-09-23"
   },
   {
    "C": 1024,
@@ -885,7 +884,7 @@
    "status": "done",
    "heldout_ce": 0.426,
    "math500": null,
-   "suite_src": "446-problem suite avg@8, 32K cap; trained to step 903, eval in-node on reservation 14246449 2026-09-23"
+   "suite_src": "446-problem suite avg@8, 32K cap; trained to step 903, eval 2026-09-23"
   }
  ],
  "allocation32k": [

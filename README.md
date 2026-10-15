@@ -1,7 +1,9 @@
 # AbridgeKV
 
 Code for **AbridgeKV: Compressing Long Reasoning into the KV Cache of Learned Pause Tokens**
-(Jack Cai, Lijie Yang, Vasilis Kontonis, Dimitris Papailiopoulos, Shivam Garg).
+(Ziyang Jack Cai, Lijie Yang, Vasilis Kontonis, Dimitris Papailiopoulos, Shivam Garg).
+
+**Paper:** [AbridgeKV.pdf](AbridgeKV.pdf)
 
 AbridgeKV trains a model to compress its own output. After every block of C = 512 generated tokens, the model reads
 K learned pause tokens: extra input tokens with trained embeddings that produce no output. Once the pause tokens
@@ -113,7 +115,7 @@ that a served model attending to the evicted text would be detected.
 ```bibtex
 @article{cai2026abridgekv,
   title  = {AbridgeKV: Compressing Long Reasoning into the KV Cache of Learned Pause Tokens},
-  author = {Cai, Jack and Yang, Lijie and Kontonis, Vasilis and Papailiopoulos, Dimitris and Garg, Shivam},
+  author = {Cai, Ziyang Jack and Yang, Lijie and Kontonis, Vasilis and Papailiopoulos, Dimitris and Garg, Shivam},
   year   = {2026}
 }
 ```

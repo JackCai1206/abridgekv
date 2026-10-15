@@ -5,7 +5,7 @@ type: software
 license: Apache-2.0
 authors:
   - family-names: Cai
-    given-names: Jack
+    given-names: Ziyang Jack
   - family-names: Yang
     given-names: Lijie
   - family-names: Kontonis
@@ -19,7 +19,7 @@ preferred-citation:
   title: "AbridgeKV: Compressing Long Reasoning into the KV Cache of Learned Pause Tokens"
   authors:
     - family-names: Cai
-      given-names: Jack
+      given-names: Ziyang Jack
     - family-names: Yang
       given-names: Lijie
     - family-names: Kontonis
